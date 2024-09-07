@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $products = Product::all();
+        $products = Product::latest()->paginate(10);
 
         return view('shops.home', [
             'title' => 'Home',

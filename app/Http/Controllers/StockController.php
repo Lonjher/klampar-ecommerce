@@ -6,12 +6,13 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class StockController extends Controller
 {
 
     public function index(){
-        $stocks = Product::all();
+        $stocks = Product::latest()->paginate(10);
 
         return view('dashboard.stock',  [
             'title' => ' Stock',
@@ -50,5 +51,26 @@ class StockController extends Controller
         // ]);
 
         return back();
+    }
+
+    public function destroy(string $id_product){
+        $product = Product::findOrFail($id_product);
+
+        Storage::delete($product->product_image);
+        $product->delete();
+        return back();
+    }
+
+    public function edit(string $id_product){
+        $product = Product::findOrFail($id_product);
+
+        return view('dashboard.edit', [
+            'title' => 'Edit Stock',
+            'product' => $product
+        ]);
+    }
+
+    public function update(Request $request, $id_product){
+
     }
 }

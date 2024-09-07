@@ -55,33 +55,32 @@
 
             <div class="grid grid-cols-5 gap-3">
                 @foreach ($products as $product)
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg shadow w-50 max-h-sm dark:bg-gray-800 dark:border-gray-700">
-                        <div class="p-3 h-1/1">
-                            <a href="#">
-                                <img class="object-cover w-full rounded-lg" src="storage/{{ $product->product_image }}"
-                                    alt="" />
-                            </a>
+                    <div class="flex flex-col w-56 rounded-lg shadow-md h-96">
+                        <div class="flex flex-1 rounded-t-lg"
+                            style="background-image: url(storage/{{ $product->product_image }});
+                                   background-size: cover;
+                                   background-repeat: no-repeat;
+                            ">
                         </div>
-                        <div class="p-3 h-1/1">
-                            <div class="flex flex-col gap-0">
-                                <span>
-                                    <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                                        {{ $product->product_name }}</h5>
-                                </span>
-                                <span class="text-sm">Rp. {{ Number::format($product->price_sell) }}</span>
+                        <div class="flex flex-col flex-1 p-2 bg-gray-100">
+                            <div class="flex-1 detail">
+                                <span class="block font-semibold">{{ $product->product_name }}</span>
+                                <span class="text-xl font-bold text-red-500">Rp.
+                                    {{ Number::format($product->price_sell) }}</span>
                             </div>
-                            <p class="mb-3 text-sm font-normal text-gray-700 dark:text-gray-400">{{ $product->description }}
-                            </p>
-                            <a href="https://wa.me/6285156752475" target="_blank"
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                Chat Penjual
-                                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                </svg>
-                            </a>
+                            <div class="flex-1 more-info">
+                                <div class="flex gap-3">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlbknLAESnOINVAGOyL_utzdTgT6UK7ehEqg&s"
+                                        width="25" alt="star">
+                                    <span>4.5 10rb+ terjual</span>
+                                </div>
+                                <span>3-7 hari kab bandung</span>
+                                <a href="https://wa.me/6282228462025" target="_blank"
+                                    class="inline-flex items-center gap-2 px-3 py-2 mt-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    <i class="bi bi-whatsapp"></i>
+                                    <span>Chat Penjual</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 @endforeach

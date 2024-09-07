@@ -84,12 +84,13 @@
                             <td class="align-middle">{{ $product->price_sell }}</td>
                             <td class="align-middle">{{ $product->quantity }}</td>
                             <td class="flex-row gap-2 d-flex">
-                                <form>
+                                <form method="POST" action="/delete/{{ $product->id_product }}">
+                                    @csrf
                                     <button class="rounded shadow btn btn-delete">
                                         <i class="bi bi-trash" style="font-size: 12px;"></i>
                                     </button>
                                 </form>
-                                <a href="#" class="rounded shadow btn btn-edit">
+                                <a href="/edit/{{ $product->id_product }}" class="rounded shadow btn btn-edit">
                                     <i class="bi bi-pencil" style="font-size: 12px;"></i>
                                 </a>
                             </td>
@@ -127,7 +128,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Produk</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

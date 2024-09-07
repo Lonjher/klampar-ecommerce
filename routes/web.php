@@ -20,7 +20,10 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/stock', [StockController::class, 'index'])->name('product');
+    Route::get('/edit/{id}', [StockController::class, 'edit']);
     Route::post('/stock', [StockController::class, 'create'])->name('create-stock');
+    Route::post('/update/{id}', [StockController::class, 'update']);
+    Route::post('/delete/{id}', [StockController::class, 'destroy']);
     Route::get('/sold', function () {
         return view('dashboard.sold',  ['title' => ' Sold']);
     })->name('sold');
