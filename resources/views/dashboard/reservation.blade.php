@@ -1,6 +1,4 @@
 @extends('layouts.dashboard')
-
-
 @push('main-content')
     @section('style')
         <style>
@@ -58,54 +56,52 @@
     @endsection
     <div class="p-3 mb-3 bg-white border rounded border-light-subtle border-top-1 sd-flex align-items-center">
         <div class="flex-row gap-3 p-3 m-0 mb-3 overflow-auto card recent-sales d-flex align-items-center">
-            <i class="bi bi-shop fs-3" style="color: #2b99d8"></i>
-            <span class="text-primary fw-bold fs-5">Kelola Stok Barang</span>
+            <img src="{{ asset('assets/img/reservation.svg') }}" alt="reservation" width="50">
+            <span class="text-primary fw-bold fs-5">Kelola Pesanan Batik</span>
         </div>
         <div class="overflow-auto card recent-sales">
-
             <div class="card-body">
                 <div class="container d-flex justify-content-between align-items-center">
-                    <h6 class="card-title" style="12px">Stock Produk <span style="21px">| Recent</span></h6>
+                    <h6 class="card-title" style="12px">Pemesan <span style="21px">| Recent</span></h6>
                     <div>
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#tambah-produk"><i class="bi bi-plus-circle" data-bs-toggle="modal"
-                                data-bs-target="#tambah-produk"></i>
+                        <a href="{{ route('reservation.create') }}" class="btn btn-primary btn-sm"><i
+                                class="bi bi-plus-circle"></i>
                             Tambah
-                            Produk</button>
+                            Pemesan</a>
                     </div>
                 </div>
 
                 <table class="table table-borderless datatable" style="font-size: 80%" id="myTable">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Gambar</th>
-                            <th scope="col">Nama Produk</th>
-                            <th scope="col">Harga Awal</th>
-                            <th scope="col">Harga Jual</th>
+                            <th scope="col">No.</th>
+                            <th scope="col">Contoh</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">Uraian</th>
                             <th scope="col">Jumlah</th>
+                            <th scope="col">Tgl. Ambil</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($products as $no => $product)
+                        @forelse ($orders as $no => $order)
                             <tr>
-                                <th class="align-middle" scope="row">{{ $no + 1 }}</th>
-                                <td><img src="storage/{{ $product->product_image }}" alt="Image" width="40px"></td>
-                                <td class="align-middle">{{ $product->product_name }}</td>
-                                <td class="align-middle"><a href="#"
-                                        class="text-primary">{{ $product->first_price }}</a>
+                                <th class="text-center" scope="row">{{ $no + 1 }}</th>
+                                <td><img src="storage/{{ $order->sample }}" alt="Image" width="50px"></td>
+                                <td>{{ $order->user_id }}</td>
+                                <td><a href="#" class="text-primary">{{ $order->description }}</a>
                                 </td>
-                                <td class="align-middle">{{ $product->price_sell }}</td>
-                                <td class="align-middle">{{ $product->quantity }}</td>
+                                <td>{{ $order->quantity }}</td>
+                                <td>{{ $order->deadline }}</td>
                                 <td class="flex-row gap-2 d-flex">
-                                    <form method="POST" action="/delete/{{ $product->id_product }}">
+                                    <form method="POST" action="reservation/{{ $order->id_reservation }}">
+                                        @method('DELETE')
                                         @csrf
                                         <button class="rounded shadow btn btn-delete">
                                             <i class="bi bi-trash" style="font-size: 12px;"></i>
                                         </button>
                                     </form>
-                                    <a data-bs-toggle="modal" data-bs-target="#update-produk{{ $product->id_product }}"
+                                    <a data-bs-toggle="modal" data-bs-target="#update-pemesan{{ $order->id_product }}"
                                         class="rounded shadow btn btn-edit">
                                         <i class="bi bi-pencil" style="font-size: 12px;"></i>
                                     </a>
@@ -128,12 +124,6 @@
 
         </div>
     </div>
-
-    <!-- Modal Tambah -->
-    @include('dashboard.create-stock')
-    <!-- Modal Update -->
-    @include('dashboard.update-stock')
-
     @push('script')
         <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
             crossorigin="anonymous"></script>

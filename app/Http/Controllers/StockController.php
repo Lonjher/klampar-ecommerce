@@ -7,6 +7,7 @@ use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 class StockController extends Controller
 {
@@ -43,14 +44,7 @@ class StockController extends Controller
             'quantity' => $request->quantity,
             'status' => $request->status
         ]);
-
-        // $stock = DB::table('stocks')->orderBy('created_at', 'desc')->first();
-        // ProductImage::create([
-        //     'product_id' => $stock->id_product,
-        //     'image_name' => $validatedData['product_image']
-        // ]);
-
-        return back();
+        return back()->with('success', 'Produk Berhasil ditambahkan!');
     }
 
     public function destroy(string $id_product){
@@ -61,16 +55,37 @@ class StockController extends Controller
         return back();
     }
 
-    public function edit(string $id_product){
+    public function edit(string $id_product): View
+    {
         $product = Product::findOrFail($id_product);
 
-        return view('dashboard.edit', [
-            'title' => 'Edit Stock',
+        return view('dashboard.edit-stock', [
+            'title' => ' Edit Stock',
             'product' => $product
         ]);
     }
 
     public function update(Request $request, $id_product){
+        $validData = $request->validate([
+            'product_name' => 'required|max:255',
+            'description' => 'required',
+            'first_price' => 'required|numeric',
+            'price_sell' => 'required|numeric',
+            'quantity' => 'required|numeric',
+            'status' => 'required'
+        ]);
 
+        $product = Product::findOrFail($id_product);
+
+        if($request->hasFile('product_image')){
+            $validData['product_image'] = $request->file('product_image')->store('stocks');
+            Storage::delete($product->product_image);
+            $product->update($validData, [
+                'product_image' => $validData['product_image']
+            ]);
+        }else {
+            $product->update($validData);
+        }
+        return back()->with('success', 'Produk Berhasil diubah!');
     }
 }

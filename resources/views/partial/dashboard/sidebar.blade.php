@@ -1,6 +1,6 @@
 <!-- Start Utama  Nav -->
 <li class="nav-item">
-    <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="/">
+    <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="{{ route('home') }}">
         <i class="bi bi-house-door"></i>
         <span>Home</span>
     </a>
@@ -9,7 +9,7 @@
 
 <!-- Start Dashboard Nav -->
 <li class="nav-item">
-    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">
+    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
     </a>
@@ -22,7 +22,7 @@
 
 <!-- Start Produk -->
 <li class="nav-item">
-    <a class="nav-link {{ Request::is('stock') ? 'active' : '' }}" href="/stock">
+    <a class="nav-link {{ Request::is('stock') ? 'active' : '' }}" href="{{ route('product') }}">
         <i class="bi bi-shop"></i>
         <span>Kelola Stok</span>
     </a>
@@ -46,7 +46,7 @@
 <li class="py-2 nav-heading text-secondary">PEMESANAN</li>
 
 <li class="nav-item">
-    <a class="nav-link {{ Request::is('listening') ? 'active' : '' }}" href="/listening">
+    <a class="nav-link {{ Request::is('reservation*') ? 'active' : '' }}" href="/reservation">
         <i class="bi bi-basket"></i>
         <span>Pemesanan Produk</span>
     </a>

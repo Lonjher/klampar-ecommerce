@@ -1,8 +1,7 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container relative mx-auto carousel" style="max-width:1600px;">
-        @include('partial.navbar')
+    <div class="container mx-auto mt-10 carousel" style="max-width:1600px;">
         <section class="flex w-full pt-12 mx-auto bg-right bg-cover bg-nordic-gray-light md:pt-0 md:items-center"
             style="max-width:1600px; height: 32rem; background-image: url('https://images.unsplash.com/photo-1422190441165-ec2956dc9ecc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80');">
 
@@ -24,7 +23,7 @@
 
         <div class="container flex flex-wrap items-center pt-4 pb-12 mx-auto">
 
-            <nav id="store" class="top-0 z-30 w-full px-6 py-1">
+            <nav id="store" class="top-0 w-full px-6 py-1 z-1">
                 <div class="container flex flex-wrap items-center justify-between w-full px-2 py-3 mx-auto mt-0">
 
                     <a class="text-xl font-bold tracking-wide text-gray-800 no-underline uppercase hover:no-underline "

@@ -1,6 +1,6 @@
-<footer class="container py-2 mx-auto bg-white border-t-2 border-sky-400">
-    <div class="container flex px-3 py-8 ">
-        <div class="flex flex-wrap w-full mx-auto">
+<footer class="container w-full bg-white border-t-2 border-sky-400">
+    <div class="container flex w-full py-4">
+        <div class="flex flex-wrap px-3 mx-auto">
             <div class="flex w-full lg:w-1/2 ">
                 <div class="px-3 md:px-0">
                     <h3 class="font-bold text-gray-900">About</h3>

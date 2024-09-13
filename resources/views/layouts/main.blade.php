@@ -11,9 +11,9 @@
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Google Font -->
+    {{-- <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet"> --}}
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         .work-sans {
             font-family: 'Work Sans', sans-serif;
@@ -70,8 +70,10 @@
 
 </head>
 
-<body>
+<body class="relative bg-white_navy">
+    @include('partial.navbar')
     @yield('main')
+    @stack('script')
 </body>
 
 </html>

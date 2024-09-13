@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('main-content')
+@push('main-content')
     <div class="p-3 mb-3 bg-white border rounded border-light-subtle border-top-1 sd-flex align-items-center">
         <div class="p-3 m-0 mb-2 overflow-auto card recent-sales d-flex justify-content-center">
             <span class="text-primary fw-bold fs-5">Barang Terjual</span>
@@ -29,9 +29,7 @@
                         </tr>
                     </tbody>
                 </table>
-
             </div>
-
         </div>
     </div>
-@endsection
+@endpush
