@@ -67,7 +67,7 @@
                         <a href="{{ route('reservation.create') }}" class="btn btn-primary btn-sm"><i
                                 class="bi bi-plus-circle"></i>
                             Tambah
-                            Pemesan</a>
+                            Pesanan</a>
                     </div>
                 </div>
 

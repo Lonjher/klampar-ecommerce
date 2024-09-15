@@ -66,16 +66,21 @@ class StockController extends Controller
     }
 
     public function update(Request $request, $id_product){
+        $product = Product::findOrFail($id_product);
+
         $validData = $request->validate([
             'product_name' => 'required|max:255',
-            'description' => 'required',
             'first_price' => 'required|numeric',
             'price_sell' => 'required|numeric',
             'quantity' => 'required|numeric',
-            'status' => 'required'
         ]);
 
-        $product = Product::findOrFail($id_product);
+
+        if($request->description != null){
+            $validData['description'] = $request->description;
+        }else if($request->status != null){
+            $validData['status'] = $request->status;
+        }
 
         if($request->hasFile('product_image')){
             $validData['product_image'] = $request->file('product_image')->store('stocks');
@@ -86,6 +91,7 @@ class StockController extends Controller
         }else {
             $product->update($validData);
         }
-        return back()->with('success', 'Produk Berhasil diubah!');
+
+        return back()->with(['success', 'Produk Berhasil diubah!']);
     }
 }

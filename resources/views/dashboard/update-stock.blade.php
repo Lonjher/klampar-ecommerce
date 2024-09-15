@@ -17,14 +17,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/edit/{{ $product->product_id }}" style="font-size: 12px"
+                    <form method="POST" action="/update/{{ $product->id_product }}" style="font-size: 12px"
                         enctype="multipart/form-data">
                         @csrf
                         <div>
                             <label for="product_image" class="form-label">Gambar</label>
                             <input
                                 class="form-control form-control-sm input-blue @error('product_image') is-invalid @enderror"
-                                id="product_image" type="file" name="product_image" style="font-size: 12px" required
+                                id="product_image" type="file" name="product_image" style="font-size: 12px"
                                 onchange="previewImage()">
                             <img class="mt-2 img-preview img-fluid col-sm-3">
                             @error('product_image')

@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-
     <!-- Google Font -->
     {{-- <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet"> --}}
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
@@ -74,6 +73,8 @@
     @include('partial.navbar')
     @yield('main')
     @stack('script')
+    {{-- <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> --}}
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
 </body>
 
 </html>

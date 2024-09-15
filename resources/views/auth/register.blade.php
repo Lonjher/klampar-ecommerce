@@ -26,17 +26,10 @@
         </div> --}}
 
         <!-- WA Number -->
-        <div>
+        <div class="mt-4">
             <x-input-label for="wa_number" :value="__('Wa Number')" />
             <x-text-input id="wa_number" class="block w-full mt-1" type="text" name="wa_number" required />
             <x-input-error :messages="$errors->get('wa_number')" class="mt-2" />
-        </div>
-
-        <!-- Name -->
-        <div>
-            <x-input-label for="isAdmin" :value="__('is Admin')" />
-            <x-text-input id="isAdmin" class="block w-full mt-1" type="number" name="isAdmin" required />
-            <x-input-error :messages="$errors->get('isAdmin')" class="mt-2" />
         </div>
 
         <!-- Password -->

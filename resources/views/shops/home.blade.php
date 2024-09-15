@@ -19,7 +19,7 @@
         </section>
     </div>
 
-    <section class="py-8 bg-white">
+    <section class="py-8 bg-slate-100">
 
         <div class="container flex flex-wrap items-center pt-4 pb-12 mx-auto">
 
@@ -52,41 +52,53 @@
                 </div>
             </nav>
 
-            <div class="grid grid-cols-5 gap-3">
-                @foreach ($products as $product)
-                    <div class="flex flex-col w-56 rounded-lg shadow-md h-96">
-                        <div class="flex flex-1 rounded-t-lg"
-                            style="background-image: url(storage/{{ $product->product_image }});
-                                   background-size: cover;
-                                   background-repeat: no-repeat;
-                            ">
-                        </div>
-                        <div class="flex flex-col flex-1 p-2 bg-gray-100">
-                            <div class="flex-1 detail">
-                                <span class="block font-semibold">{{ $product->product_name }}</span>
-                                <span class="text-xl font-bold text-red-500">Rp.
-                                    {{ Number::format($product->price_sell) }}</span>
+            <div class="w-full px-6">
+                <div class="grid justify-center gap-3 sm:grid-cols-2 sm:justify-center md:grid-cols-3 lg:grid-cols-5">
+                    @foreach ($products as $product)
+                        <div class="flex flex-col w-56 rounded-lg shadow-md h-96">
+                            <div class="flex flex-1 rounded-t-lg"
+                                style="background-image: url(storage/{{ $product->product_image }});
+                                       background-size: cover;
+                                       background-repeat: no-repeat;
+                                ">
                             </div>
-                            <div class="flex-1 more-info">
-                                <div class="flex gap-3">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlbknLAESnOINVAGOyL_utzdTgT6UK7ehEqg&s"
-                                        width="25" alt="star">
-                                    <span>4.5 10rb+ terjual</span>
+                            <div class="flex flex-col p-2 bg-white rounded-b-lg">
+                                <div class="detail">
+                                    <span class="block font-semibold">{{ $product->product_name }}</span>
+                                    <span class="text-xl font-bold text-red-500">Rp.
+                                        {{ Number::format($product->price_sell) }}</span>
                                 </div>
-                                <span>3-7 hari kab bandung</span>
-                                <a href="https://wa.me/6282228462025" target="_blank"
-                                    class="inline-flex items-center gap-2 px-3 py-2 mt-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                    <i class="bi bi-whatsapp"></i>
-                                    <span>Chat Penjual</span>
-                                </a>
+                                <div class="more-info">
+                                    <div class="flex flex-col">
+                                        <span>3-7 hari | Kab. Pamekasan</span>
+                                        <span
+                                            class="text-sm text-gray-400">{{ $product->created_at->diffForHumans() }}</span>
+                                    </div>
+                                    <a href="https://wa.me/6281937331166" target="_blank"
+                                        class="inline-flex items-center gap-2 px-3 py-2 mt-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        <i class="bi bi-whatsapp"></i>
+                                        <span>Chat Penjual</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
-
     </section>
+    <div class="w-full bg-blue-500">
+        @include('partial.footer')
+    </div>
+    @push('script')
+        <script>
+            let menu = document.getElementById('menu')
+            let tombol = document.getElementById('tombol')
 
-    @include('partial.footer')
+            function Menu(e) {
+                e.name === 'menu' ? (e.name = 'close', menu.classList.remove('hidden'), tombol.classList.remove('hidden')) : (e
+                    .name = 'menu', menu.classList.add('hidden'), tombol.classList.add('hidden'))
+            }
+        </script>
+    @endpush
 @endsection

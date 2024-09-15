@@ -53,6 +53,10 @@
             .dt-search label {
                 font-size: 14px;
             }
+
+            .dt-info {
+                font-size: 12px;
+            }
         </style>
         <link rel="stylesheet" href="//cdn.datatables.net/2.1.5/css/dataTables.dataTables.min.css">
     @endsection
@@ -62,7 +66,6 @@
             <span class="text-primary fw-bold fs-5">Kelola Stok Barang</span>
         </div>
         <div class="overflow-auto card recent-sales">
-
             <div class="card-body">
                 <div class="container d-flex justify-content-between align-items-center">
                     <h6 class="card-title" style="12px">Stock Produk <span style="21px">| Recent</span></h6>
@@ -74,7 +77,15 @@
                             Produk</button>
                     </div>
                 </div>
-
+                @if ($errors->any())
+                    <div class="container alert alert-danger">
+                        <ul class="list-unstyled">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <table class="table table-borderless datatable" style="font-size: 80%" id="myTable">
                     <thead>
                         <tr>
@@ -84,20 +95,28 @@
                             <th scope="col">Harga Awal</th>
                             <th scope="col">Harga Jual</th>
                             <th scope="col">Jumlah</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($products as $no => $product)
                             <tr>
-                                <th class="align-middle" scope="row">{{ $no + 1 }}</th>
+                                <th class="text-center" scope="row">{{ $no + 1 }}</th>
                                 <td><img src="storage/{{ $product->product_image }}" alt="Image" width="40px"></td>
-                                <td class="align-middle">{{ $product->product_name }}</td>
-                                <td class="align-middle"><a href="#"
-                                        class="text-primary">{{ $product->first_price }}</a>
+                                <td>{{ $product->product_name }}</td>
+                                <td class="text-center">{{ $product->first_price }}</td>
+                                <td class="text-center">{{ $product->price_sell }}</td>
+                                <td class="text-center">{{ $product->quantity }}</td>
+                                <td class="">
+                                    @if ($product->status)
+                                        <span class="p-1 text-center text-white rounded small"
+                                            style="background-color: #08ca42;">Tersedia</span>
+                                    @else
+                                        <span class="w-auto p-1 text-center text-white rounded small"
+                                            style="background-color: #fa1212;">Habis</span>
+                                    @endif
                                 </td>
-                                <td class="align-middle">{{ $product->price_sell }}</td>
-                                <td class="align-middle">{{ $product->quantity }}</td>
                                 <td class="flex-row gap-2 d-flex">
                                     <form method="POST" action="/delete/{{ $product->id_product }}">
                                         @csrf

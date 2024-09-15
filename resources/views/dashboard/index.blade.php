@@ -22,21 +22,21 @@
             <div><img src="{{ asset('assets/svg/user-vector.svg') }}" width="90"></div>
             <div class="px-4 d-flex flex-column justify-content-center">
                 <span class="mb-0 fw-bold h2">{{ $userCount }}</span>
-                <small>Total User</small>
+                <small>{{ __('Total User') }}</small>
             </div>
         </div>
         <div class="px-3 py-1 border-2 rounded shadow col d-flex align-items-center border-top border-primary cardo">
             <div><img src="{{ asset('assets/svg/stock-vector.svg') }}" width="90"></div>
             <div class="px-4 d-flex flex-column justify-content-center">
                 <span class="mb-0 h2 fw-bold">{{ $stockCount }}</span>
-                <small>Total Stok</small>
+                <small>{{ __('Total Stok') }}</small>
             </div>
         </div>
         <div class="px-3 py-1 border-2 rounded shadow col d-flex align-items-center border-top border-primary cardo">
             <div><img src="{{ asset('assets/svg/order.png   ') }}" width="90"></div>
             <div class="px-4 d-flex flex-column justify-content-center">
                 <span class="mb-0 h2 fw-bold">{{ $orderCount }}</span>
-                <small>Total Pesanan</small>
+                <small>{{ __('Total Pesanan') }}</small>
             </div>
         </div>
     </div>
