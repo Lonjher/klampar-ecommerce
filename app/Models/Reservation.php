@@ -15,4 +15,5 @@ class Reservation extends Model
         'quantity',
         'deadline'
     ];
+    protected $primaryKey = 'id_reservation';
 }

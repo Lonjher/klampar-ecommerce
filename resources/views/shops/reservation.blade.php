@@ -11,7 +11,7 @@
                 <img src="{{ asset('assets/img/order.png') }}" alt="order">
             </div>
             <div class="w-full">
-                <form class="grid-flow-row p-4 mx-auto md:grid" action="{{ route('reservation.store') }}" method="POST"
+                <form class="grid-flow-row p-4 mx-auto md:grid" action="{{ route('shop-reservation') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="col-span-2 mb-7">

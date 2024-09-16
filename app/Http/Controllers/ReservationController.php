@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class ReservationController extends Controller
 {
@@ -26,9 +26,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        return view('shops.reservation', [
-            'title' => 'Pemesanan'
-        ]);
+        //
     }
 
     /**
@@ -36,17 +34,7 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        $validData = $request->validate([
-            'description' => 'required|min:10',
-            'quantity' => 'required|numeric|min:1',
-            'deadline' => 'required|date|after:tomorrow'
-        ]);
-
-        $validData['sample'] = $request->file('sample')->store('reservations');
-        $validData['user_id'] = 1;
-        $validData['deadline'] = Carbon::parse($request->deadline)->translatedFormat('Y-m-d');;
-        Reservation::create($validData);
-        return back()->with('success', 'Data Pesanan berhasil disimpan!');
+        //
     }
 
     /**
@@ -78,7 +66,7 @@ class ReservationController extends Controller
      */
     public function destroy(string $id)
     {
-        $order = Product::findOrFail($id_product);
+        $order = Reservation::findOrFail($id);
 
         Storage::delete($order->sample);
         $order->delete();

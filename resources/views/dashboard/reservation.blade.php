@@ -64,8 +64,7 @@
                 <div class="container d-flex justify-content-between align-items-center">
                     <h6 class="card-title" style="12px">Pemesan <span style="21px">| Recent</span></h6>
                     <div>
-                        <a href="{{ route('reservation.create') }}" class="btn btn-primary btn-sm"><i
-                                class="bi bi-plus-circle"></i>
+                        <a href="" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i>
                             Tambah
                             Pesanan</a>
                     </div>

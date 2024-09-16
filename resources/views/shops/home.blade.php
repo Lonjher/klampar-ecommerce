@@ -74,11 +74,16 @@
                                         <span
                                             class="text-sm text-gray-400">{{ $product->created_at->diffForHumans() }}</span>
                                     </div>
-                                    <a href="https://wa.me/6281937331166" target="_blank"
-                                        class="inline-flex items-center gap-2 px-3 py-2 mt-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        <i class="bi bi-whatsapp"></i>
-                                        <span>Chat Penjual</span>
-                                    </a>
+                                    <div class="grid grid-cols-4 gap-2">
+                                        <a href="#"
+                                            class="col-span-3 px-3 py-2 mt-3 transition ease-in-out delay-150 text-teal-50 bg-blue-500 hover:-translate-y-0.5 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-lg font-medium text-center items-center focus:ring-4 focus:outline-none">
+                                            <span>Check Out</span>
+                                        </a>
+                                        <a href="https://wa.me/6281937331166" target="_blank"
+                                            class="col-span-1 mt-3 flex align-middle font-medium justify-center transition ease-in-out delay-100 text-teal-950 hover:text-teal-50 text-xl bg-green-200 hover:-translate-y-0.5 hover:scale-110 hover:bg-green-500 duration-300 rounded-lg items-center focus:ring-4 focus:outline-none">
+                                            <i class="bi bi-whatsapp"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
