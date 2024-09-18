@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reservations', function (Blueprint $table) {
-            $table->id('id_reservation');
+        Schema::create('adresses', function (Blueprint $table) {
+            $table->id('id_adresses');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id_user')->on('users');
-            $table->string('sample');
-            $table->text('description');
-            $table->integer('quantity');
-            $table->date('deadline');
-            $table->boolean('status')->default(0);
+            $table->string('dusun')->nullable();
+            $table->string('desa')->nullable();
+            $table->string('kecamatan');
+            $table->string('kabupaten');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('adresses');
     }
 };

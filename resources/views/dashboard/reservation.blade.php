@@ -79,6 +79,7 @@
                             <th scope="col">Uraian</th>
                             <th scope="col">Jumlah</th>
                             <th scope="col">Tgl. Ambil</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -92,6 +93,15 @@
                                 </td>
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ $order->deadline }}</td>
+                                <td>
+                                    @if ($order->status)
+                                        <span class="p-1 text-center text-white rounded small"
+                                            style="background-color: #d7f04c;">Pending</span>
+                                    @else
+                                        <span class="w-auto p-1 text-center text-white rounded small"
+                                            style="background-color: #fa1212;">Selesai</span>
+                                    @endif
+                                </td>
                                 <td class="flex-row gap-2 d-flex">
                                     <form method="POST" action="reservation/{{ $order->id_reservation }}">
                                         @method('DELETE')
@@ -111,7 +121,7 @@
                                 <td colspan="7" style="background-color: #f7d5d5" class="p-2 rounded">
                                     <div class="flex-row gap-2 d-flex align-items-center justify-content-center fs-5">
                                         <i class="bi bi-database-dash"></i>
-                                        <span class="fs-6">Data Produk Kosong</span>
+                                        <span class="fs-6">Data Pesanan Kosong</span>
                                     </div>
                                 </td>
                             </tr>
@@ -128,7 +138,17 @@
             crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/2.1.5/js/dataTables.min.js"></script>
         <script>
-            let table = new DataTable('#myTable');
+            let table = new DataTable('#myTable', {
+                columns: [
+                    null,
+                    null,
+                    null,
+                    {
+                        data: 'office', // can be null or undefined
+                        defaultContent: ''
+                    }
+                ]
+            });
         </script>
     @endpush
 @endpush

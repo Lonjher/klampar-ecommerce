@@ -26,7 +26,11 @@ class AppServiceProvider extends ServiceProvider
 	    Carbon::setLocale('id');
 
         Gate::define('admin', function(User $user){
-            return $user->isAdmin;
+            return $user->role_id == 1;
+        });
+
+        Gate::define('seller', function(User $user){
+            return $user->role_id == 2;
         });
 
     }

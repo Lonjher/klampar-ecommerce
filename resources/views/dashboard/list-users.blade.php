@@ -10,11 +10,14 @@
                 <table class="table table-borderless datatable" style="font-size: 80%">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nama Produk</th>
-                            <th scope="col">Harga Awal</th>
-                            <th scope="col">Harga Jual</th>
+                            <th scope="col">No.</th>
+                            <th scope="col">Nama Pengguna</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">No. WA</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Sebagai</th>
                             <th scope="col">Action</th>
+
                         </tr>
                     </thead>
                     <tbody>

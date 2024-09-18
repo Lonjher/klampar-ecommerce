@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('avatar')->nullable();
             $table->string('wa_number');
-            $table->boolean('isAdmin')->default(0);
+            $table->unsignedBigInteger('role_id');
+            $table->foreign('role_id')->references('id_role')->on('roles');
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

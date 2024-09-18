@@ -30,7 +30,6 @@
                         href="#">
                         Store
                     </a>
-
                     <div class="flex items-center" id="store-nav-content">
 
                         <a class="inline-block pl-3 no-underline hover:text-black" href="#">
@@ -54,7 +53,7 @@
 
             <div class="w-full px-6">
                 <div class="grid justify-center gap-3 sm:grid-cols-2 sm:justify-center md:grid-cols-3 lg:grid-cols-5">
-                    @foreach ($products as $product)
+                    @forelse ($products as $product)
                         <div class="flex flex-col w-56 rounded-lg shadow-md h-96">
                             <div class="flex flex-1 rounded-t-lg"
                                 style="background-image: url(storage/{{ $product->product_image }});
@@ -75,19 +74,28 @@
                                             class="text-sm text-gray-400">{{ $product->created_at->diffForHumans() }}</span>
                                     </div>
                                     <div class="grid grid-cols-4 gap-2">
-                                        <a href="#"
-                                            class="col-span-3 px-3 py-2 mt-3 transition ease-in-out delay-150 text-teal-50 bg-blue-500 hover:-translate-y-0.5 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-lg font-medium text-center items-center focus:ring-4 focus:outline-none">
-                                            <span>Check Out</span>
-                                        </a>
+                                        <button data-modal-target="desc-modal{{ $product->id_product }}"
+                                            data-modal-toggle="desc-modal{{ $product->id_product }}"
+                                            class="col-span-3 py-2 mt-5 transition ease-in-out delay-150 text-teal-50 bg-blue-700 hover:-translate-y-0.5 hover:scale-110 hover:bg-blue-800 duration-300 rounded-lg hover:font-bold text-center items-center focus:ring-4 focus:outline-none"
+                                            type="button">
+                                            <span>Deskripsi</span>
+                                        </button>
                                         <a href="https://wa.me/6281937331166" target="_blank"
-                                            class="col-span-1 mt-3 flex align-middle font-medium justify-center transition ease-in-out delay-100 text-teal-950 hover:text-teal-50 text-xl bg-green-200 hover:-translate-y-0.5 hover:scale-110 hover:bg-green-500 duration-300 rounded-lg items-center focus:ring-4 focus:outline-none">
+                                            class="col-span-1 mt-5 flex align-middle font-medium justify-center transition ease-in-out delay-100 text-teal-950 hover:text-teal-50 text-xl bg-green-200 hover:-translate-y-0.5 hover:scale-110 hover:bg-green-500 duration-300 rounded-lg items-center focus:ring-4 focus:outline-none">
                                             <i class="bi bi-whatsapp"></i>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="p-4 grid align-middle justify-center sm:col-span-2 md:col-span-3 lg:col-span-5 w-full">
+                            <div class="flex justify-center"><img src="{{ asset('assets/svg/no-data.svg') }}" alt="no-data"
+                                    class="lg:w-64 md:w-60 sm:w-60"></div>
+                            <span class="font-medium text-gray-500">Ups, Data Kosong, Hubungi admin untuk update produk
+                                terbaru!</span>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -95,6 +103,9 @@
     <div class="w-full bg-blue-500">
         @include('partial.footer')
     </div>
+    <!-- Modal Description -->
+    @include('desc-modal')
+
     @push('script')
         <script>
             let menu = document.getElementById('menu')

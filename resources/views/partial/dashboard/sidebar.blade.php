@@ -18,7 +18,7 @@
 
 {{-- Start Archive Section --}}
 {{-- #---------------------# --}}
-<li class="py-2 nav-heading text-secondary">PENJUALAN</li>
+<li class="py-2 nav-heading text-secondary">PEMASARAN</li>
 
 <!-- Start Produk -->
 <li class="nav-item">
@@ -29,20 +29,6 @@
 </li>
 <!-- End Produk Nav -->
 
-<li class="nav-item">
-    <a class="nav-link {{ Request::is('sold') ? 'active' : '' }}" href="{{ route('sold') }}">
-        <i class="bi bi-bag-x"></i>
-        <span>Produk Terjual</span>
-    </a>
-</li><!-- End Speaking Page Nav -->
-
-<li class="nav-item">
-    <a class="nav-link {{ Request::is('speaking') ? 'active' : '' }}" href="#">
-        <i class="bi bi-cash"></i>
-        <span>Transaksi</span>
-    </a>
-</li><!-- End Speaking Page Nav -->
-
 <li class="py-2 nav-heading text-secondary">PEMESANAN</li>
 
 <li class="nav-item">
@@ -52,27 +38,17 @@
     </a>
 </li><!-- End Listening Page Nav -->
 
-{{-- <li class="nav-item">
-    <a class="nav-link {{ Request::is('reading') ? 'active' : '' }}" href="/reading">
-        <i class="bi bi-book"></i>
-        <span>Reading</span>
-    </a>
-</li><!-- End Reading Page Nav --> --}}
-
-{{-- <li class="nav-item">
-    <a class="nav-link {{ Request::is('translation') ? 'active' : '' }}" href="/translation">
-        <i class="bi bi-translate"></i>
-        <span>Translation</span>
-    </a>
-</li><!-- End Translation Page Nav --> --}}
-{{-- #-------------------# --}}
-{{-- End Archive Section --}}
-
-
 {{-- Start Master Section --}}
 {{-- #---------------------# --}}
 <li class="py-2 nav-heading text-secondary">MASTER</li>
-
+@can('admin')
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="{{ route('users') }}">
+            <i class="bi bi-people"></i>
+            <span>Pengguna</span>
+        </a>
+    </li>
+@endcan
 @if (Route::has('login') && Route::has('logout'))
     @auth
         <li class="nav-item">

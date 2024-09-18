@@ -18,13 +18,15 @@
 </div>
 <div class="container p-4 mb-4 bg-white d-flex align-items-center justify-content-center">
     <div class="container gap-3 row">
-        <div class="px-3 py-1 border-2 rounded shadow col d-flex align-items-center border-top border-primary cardo">
-            <div><img src="{{ asset('assets/svg/user-vector.svg') }}" width="90"></div>
-            <div class="px-4 d-flex flex-column justify-content-center">
-                <span class="mb-0 fw-bold h2">{{ $userCount }}</span>
-                <small>{{ __('Total User') }}</small>
+        @can('admin')
+            <div class="px-3 py-1 border-2 rounded shadow col d-flex align-items-center border-top border-primary cardo">
+                <div><img src="{{ asset('assets/svg/user-vector.svg') }}" width="90"></div>
+                <div class="px-4 d-flex flex-column justify-content-center">
+                    <span class="mb-0 fw-bold h2">{{ $userCount }}</span>
+                    <small>{{ __('Total User') }}</small>
+                </div>
             </div>
-        </div>
+        @endcan
         <div class="px-3 py-1 border-2 rounded shadow col d-flex align-items-center border-top border-primary cardo">
             <div><img src="{{ asset('assets/svg/stock-vector.svg') }}" width="90"></div>
             <div class="px-4 d-flex flex-column justify-content-center">

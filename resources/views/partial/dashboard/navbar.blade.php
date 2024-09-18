@@ -30,14 +30,14 @@
     <div class="mx-5 d-flex justify-content-center align-items-center">
         @auth
             <div class="mx-2 rounded-circle">
-                <img src="{{ auth()->user()->avatar }}" alt="avatar" width="40px" class="rounded-circle">
+                <img src="{{ auth()->user()->avatar }}" alt="avatar" width="30px" class="rounded-circle">
             </div>
             <div class="d-flex flex-column justify-content-center lh-1 ailgn-items-center profil">
                 <span class="fw-bold text-primary">{{ auth()->user()->name }} <br></span>
-                @if (auth()->user()->isAdmin)
+                @if (auth()->user()->role_id == 1)
                     <span class="span-text" style="font-size: 12px">Admin</span>
-                @else
-                    <span class="span-text">User</span>
+                @elseif (auth()->user()->role_id == 2)
+                    <span class="span-text" style="font-size: 12px">Seller</span>
                 @endif
             </div>
         @endauth

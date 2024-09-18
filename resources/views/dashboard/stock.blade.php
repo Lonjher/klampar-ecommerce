@@ -86,29 +86,29 @@
                         </ul>
                     </div>
                 @endif
-                <table class="table table-borderless datatable" style="font-size: 80%" id="myTable">
+                <table class="table table-borderless datatable" style="font-size: 80%" id="stock-table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Gambar</th>
-                            <th scope="col">Nama Produk</th>
-                            <th scope="col">Harga Awal</th>
-                            <th scope="col">Harga Jual</th>
-                            <th scope="col">Jumlah</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+                            <th>No.</th>
+                            <th>Gambar</th>
+                            <th>Nama Produk</th>
+                            <th>Harga Awal</th>
+                            <th>Harga Jual</th>
+                            <th>Jumlah</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($products as $no => $product)
                             <tr>
-                                <th class="text-center" scope="row">{{ $no + 1 }}</th>
+                                <td class="text-center">{{ $no + 1 }}</td>
                                 <td><img src="storage/{{ $product->product_image }}" alt="Image" width="40px"></td>
                                 <td>{{ $product->product_name }}</td>
                                 <td class="text-center">{{ $product->first_price }}</td>
                                 <td class="text-center">{{ $product->price_sell }}</td>
                                 <td class="text-center">{{ $product->quantity }}</td>
-                                <td class="">
+                                <td>
                                     @if ($product->status)
                                         <span class="p-1 text-center text-white rounded small"
                                             style="background-color: #08ca42;">Tersedia</span>
@@ -132,7 +132,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" style="background-color: #f7d5d5" class="p-2 rounded">
+                                <td style="background-color: #f7d5d5" class="p-2 rounded">
                                     <div class="flex-row gap-2 d-flex align-items-center justify-content-center fs-5">
                                         <i class="bi bi-database-dash"></i>
                                         <span class="fs-6">Data Produk Kosong</span>
@@ -142,7 +142,6 @@
                         @endforelse
                     </tbody>
                 </table>
-
             </div>
 
         </div>
@@ -158,7 +157,7 @@
             crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/2.1.5/js/dataTables.min.js"></script>
         <script>
-            let table = new DataTable('#myTable');
+            new DataTable('#stock-table');
         </script>
     @endpush
 @endpush

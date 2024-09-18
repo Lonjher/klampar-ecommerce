@@ -24,6 +24,13 @@
                 class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">Pemesanan
             </a>
         </li>
+        @can('admin')
+        <li class="my-4 md:my-0 lg:my-0">
+            <a href="{{ route('dashboard') }}"
+                class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">Dashboard
+            </a>
+        </li>
+        @endcan
         <li class="my-4 md:my-0 lg:my-0">
             <a href="#"
                 class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">Tentang
