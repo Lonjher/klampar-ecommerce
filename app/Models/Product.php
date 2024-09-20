@@ -14,6 +14,7 @@ class Product extends Model
     protected $fillable = [
         'user_id',
         'product_image',
+        'slug',
         'product_name',
         'description',
         'first_price',
@@ -22,4 +23,7 @@ class Product extends Model
         'status'
     ];
 
+    public function user(){
+        return $this->hasOne(User::class, 'id_user', 'user_id');
+    }
 }

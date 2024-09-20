@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserSeeder extends Seeder
 {
@@ -18,6 +20,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Admin',
                 'email' => 'admin@admin.com',
+                'username' => 'admin',
                 'avatar' => 'assets/img/profil.jpg',
                 'wa_number' => '085156752475',
                 'role_id'=> 1,
@@ -26,6 +29,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Lailur Rahman',
                 'email' => 'ilur@ilur.com',
+                'username' => 'ilur',
                 'avatar' => 'assets/img/user1.jpg',
                 'wa_number' => '082228462025',
                 'role_id'=> 2,
@@ -34,6 +38,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Filman Agil Sabata',
                 'email' => 'agil@agil.com',
+                'username' => 'agil',
                 'avatar' => 'assets/img/user3.jpg',
                 'wa_number' => '087884734507',
                 'role_id'=> 2,
@@ -42,6 +47,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'User Biasa',
                 'email' => 'user@user.com',
+                'username' => 'user-biasa',
                 'avatar' => 'assets/img/user4.jpg',
                 'wa_number' => '085604749536',
                 'role_id'=> 3,

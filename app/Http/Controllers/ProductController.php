@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\View\View;
-use App\Models\ProductImage;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -13,8 +14,9 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
 
-    public function index(){
-        $stocks = Product::latest()->paginate(10);
+    public function index(User $user)
+    {
+        $stocks = DB::table('products')->where('user_id', '=', $user->id_user)->simplePaginate(10);
 
         return view('dashboard.stock',  [
             'title' => ' Stock',
@@ -39,6 +41,7 @@ class ProductController extends Controller
         Product::create([
             'user_id' => Auth::user()->id_user,
             'product_image' => $validData['product_image'],
+            'slug'=> Str::slug($request->product_name,'-','id'),
             'product_name' => $request->product_name,
             'description' => $request->description,
             'first_price' => $request->first_price,
@@ -77,6 +80,8 @@ class ProductController extends Controller
             'quantity' => 'required|numeric',
         ]);
 
+        $validData['slug'] = Str::slug($request->product_name,'-','id');
+
 
         if($request->description != null){
             $validData['description'] = $request->description;
@@ -95,5 +100,12 @@ class ProductController extends Controller
         }
 
         return back()->with(['success', 'Produk Berhasil diubah!']);
+    }
+
+    public function show(Product $product){
+        return view('description', [
+            'title' => 'Description',
+            'product' => $product
+        ]);
     }
 }

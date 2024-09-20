@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adresses', function (Blueprint $table) {
-            $table->id('id_adresses');
+        Schema::create('alamats', function (Blueprint $table) {
+            $table->id('id_alamat');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id_user')->on('users');
             $table->string('dusun')->nullable();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adresses');
+        Schema::dropIfExists('alamats');
     }
 };

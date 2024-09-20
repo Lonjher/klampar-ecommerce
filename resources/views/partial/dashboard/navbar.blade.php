@@ -2,7 +2,7 @@
 <header id="header" class="shadow header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
         <a href="/dashboard" class="logo d-flex align-items-center">
-            <img src="assets/img/logo-batik.png" alt="logo">
+            <img src="{{ asset('assets/img/logo-batik.png') }}" alt="logo">
             {{-- <span class="d-none d-lg-block text-primary">Klampar <span class="span-text"><br>Kabuppaten Proppo
                     Pamekasan</span></span> --}}
         </a>

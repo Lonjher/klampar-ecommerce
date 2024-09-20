@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id_user')->on('users');
             $table->string('product_image');
             $table->string('product_name');
+            $table->string('slug')->unique();
             $table->text('description');
             $table->integer('first_price');
             $table->integer('price_sell');

@@ -9,6 +9,12 @@ use App\Http\Controllers\ReservationController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/products/{product:slug}', [ProductController::class, 'show']);
+Route::get('/profil', function(){
+    return view('card-profile', [
+        'title' => 'Profil'
+    ]);
+});
 
 
 Route::middleware('auth')->group(function () {
@@ -20,8 +26,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['admin', 'seller'])->group(function () {
     Route::resource('reservation', ReservationController::class)->except('create', 'store', 'update', 'edit', 'show');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/stock', [ProductController::class, 'index'])->name('product');
+    Route::get('/dashboard/{user:username}', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/product/{user:username}', [ProductController::class, 'index'])->name('product');
     Route::get('/edit/{id}', [ProductController::class, 'edit']);
     Route::post('/stock', [ProductController::class, 'create'])->name('create-stock');
     Route::post('/update/{id}', [ProductController::class, 'update']);

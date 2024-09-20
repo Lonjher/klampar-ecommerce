@@ -9,7 +9,7 @@
 
 <!-- Start Dashboard Nav -->
 <li class="nav-item">
-    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard/{{ Auth::user()->username }}">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
     </a>
@@ -22,7 +22,8 @@
 
 <!-- Start Produk -->
 <li class="nav-item">
-    <a class="nav-link {{ Request::is('stock') ? 'active' : '' }}" href="{{ route('product') }}">
+    <a class="nav-link {{ Request::is('product/' . Auth::user()->username) ? 'active' : '' }}"
+        href="/product/{{ Auth::user()->username }}">
         <i class="bi bi-shop"></i>
         <span>Kelola Stok</span>
     </a>

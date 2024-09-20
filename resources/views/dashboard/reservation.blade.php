@@ -118,7 +118,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" style="background-color: #f7d5d5" class="p-2 rounded">
+                                <td colspan="8" style="background-color: #f7d5d5" class="p-2 rounded">
                                     <div class="flex-row gap-2 d-flex align-items-center justify-content-center fs-5">
                                         <i class="bi bi-database-dash"></i>
                                         <span class="fs-6">Data Pesanan Kosong</span>

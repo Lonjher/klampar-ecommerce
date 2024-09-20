@@ -9,8 +9,11 @@
         }
     </style>
 @endsection
-<div class="p-3 mb-3 bg-white rounded shadow d-flex align-items-center">
-    <img src="assets/svg/dashboard.svg" alt="dashboard" width="90px">
+@push('nav-bar')
+    @include('partial.dashboard.navbar')
+@endpush
+<div class="container p-3 mb-3 bg-white rounded shadow d-flex align-items-center">
+    <img src="{{ asset('assets/svg/dashboard.svg') }}" alt="dashboard" width="90px">
     <div class="mx-3">
         <h4 class="text-primary fw-bold fz-12">Selamat Datang!</h6>
             <h6>Sistem Informasi Management Produk Batik Klampar</h6>

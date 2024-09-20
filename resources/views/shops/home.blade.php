@@ -74,13 +74,12 @@
                                             class="text-sm text-gray-400">{{ $product->created_at->diffForHumans() }}</span>
                                     </div>
                                     <div class="grid grid-cols-4 gap-2">
-                                        <button data-modal-target="desc-modal{{ $product->id_product }}"
-                                            data-modal-toggle="desc-modal{{ $product->id_product }}"
-                                            class="col-span-3 py-2 mt-5 transition ease-in-out delay-150 text-teal-50 bg-blue-700 hover:-translate-y-0.5 hover:scale-110 hover:bg-blue-800 duration-300 rounded-lg hover:font-bold text-center items-center focus:ring-4 focus:outline-none"
-                                            type="button">
+                                        <a href="/products/{{ $product->slug }}"
+                                            class="col-span-3 py-2 mt-5 transition ease-in-out delay-150 text-teal-50 bg-blue-700 hover:-translate-y-0.5 hover:scale-110 hover:bg-blue-800 duration-300 rounded-lg hover:font-bold text-center items-center focus:ring-4 focus:outline-none">
                                             <span>Deskripsi</span>
-                                        </button>
-                                        <a href="https://wa.me/6281937331166" target="_blank"
+                                        </a>
+                                        <a href="https://wa.me/6281937331166/?text=Halo,%20saya%20ingin%20memesan%20produk%20Nama%20Produk%20seharga%20Rp%20150.000"
+                                            target="_blank"
                                             class="col-span-1 mt-5 flex align-middle font-medium justify-center transition ease-in-out delay-100 text-teal-950 hover:text-teal-50 text-xl bg-green-200 hover:-translate-y-0.5 hover:scale-110 hover:bg-green-500 duration-300 rounded-lg items-center focus:ring-4 focus:outline-none">
                                             <i class="bi bi-whatsapp"></i>
                                         </a>
@@ -103,8 +102,6 @@
     <div class="w-full bg-blue-500">
         @include('partial.footer')
     </div>
-    <!-- Modal Description -->
-    @include('desc-modal')
 
     @push('script')
         <script>

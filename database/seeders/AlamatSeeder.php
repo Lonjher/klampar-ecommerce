@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Adress;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Alamat;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class AdressSeeder extends Seeder
+class AlamatSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -45,7 +45,7 @@ class AdressSeeder extends Seeder
         ];
 
         foreach($adresses as $adress){
-            Adress::create($adress);
+            Alamat::create($adress);
         };
     }
 }

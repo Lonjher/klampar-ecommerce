@@ -14,16 +14,16 @@
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')"
-                required autocomplete="username" />
+                required autocomplete="email" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        {{-- <div>
-            <x-input-label for="role" :value="__('Role')" />
-            <x-text-input id="role" class="block w-full mt-1" type="text" name="role" required autofocus
-                autocomplete="admin" />
-            <x-input-error :messages="$errors->get('role')" class="mt-2" />
-        </div> --}}
+        <div>
+            <x-input-label for="username" :value="__('Username')" />
+            <x-text-input id="username" class="block w-full mt-1" type="text" name="username" required autofocus
+                autocomplete="username" />
+            <x-input-error :messages="$errors->get('username')" class="mt-2" />
+        </div>
 
         <!-- WA Number -->
         <div class="mt-4">

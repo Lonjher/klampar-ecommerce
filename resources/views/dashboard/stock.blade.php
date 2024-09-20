@@ -60,6 +60,9 @@
         </style>
         <link rel="stylesheet" href="//cdn.datatables.net/2.1.5/css/dataTables.dataTables.min.css">
     @endsection
+    @push('nav-bar')
+        @include('partial.dashboard.navbar')
+    @endpush
     <div class="p-3 mb-3 bg-white border rounded border-light-subtle border-top-1 sd-flex align-items-center">
         <div class="flex-row gap-3 p-3 m-0 mb-3 overflow-auto card recent-sales d-flex align-items-center">
             <i class="bi bi-shop fs-3" style="color: #2b99d8"></i>
@@ -103,7 +106,8 @@
                         @forelse ($products as $no => $product)
                             <tr>
                                 <td class="text-center">{{ $no + 1 }}</td>
-                                <td><img src="storage/{{ $product->product_image }}" alt="Image" width="40px"></td>
+                                <td><img src="{{ asset('storage/' . $product->product_image) }}" alt="Image"
+                                        width="40px"></td>
                                 <td>{{ $product->product_name }}</td>
                                 <td class="text-center">{{ $product->first_price }}</td>
                                 <td class="text-center">{{ $product->price_sell }}</td>
@@ -132,7 +136,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td style="background-color: #f7d5d5" class="p-2 rounded">
+                                <td colspan="8" style="background-color: #f7d5d5" class="p-2 rounded">
                                     <div class="flex-row gap-2 d-flex align-items-center justify-content-center fs-5">
                                         <i class="bi bi-database-dash"></i>
                                         <span class="fs-6">Data Produk Kosong</span>

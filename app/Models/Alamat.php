@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Adress extends Model
+class Alamat extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'id_adresses';
+
+    protected $primaryKey = 'id_alamat';
 
     protected $fillable = [
         'user_id',
@@ -18,4 +19,8 @@ class Adress extends Model
         'kabupaten',
         'note'
     ];
+
+    public function user(){
+        return $this->hasOne(User::class, 'id_user', 'user_id');
+    }
 }
