@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="https://github.com/Lonjher/klampar-ecommerce/blob/main/public/assets/img/logo-batik.png" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="https://github.com/Lonjher/klampar-ecommerce/blob/main/public/assets/img/logo-batik.png" width="500" alt="Logo"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -42,7 +42,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ## Universitas Annuqayah
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://github.com/Lonjher/klampar-ecommerce/blob/main/public/assets/img/ua-logo.png" width="400" alt="UA Logo"></a></p>
+<p align="center"><a href="https://ua.ac.id" target="_blank"><img src="https://github.com/Lonjher/klampar-ecommerce/blob/main/public/assets/img/ua.png" width="400" alt="UA Logo"></a></p>
 
 Universitas Annuqayah merupakan sebuah kampus berlokasi di desa Guluk-guluk Sumenep Madura. Kampus yang memiliki orientasi lebih pada Tatakrama dan Akhlaqul Karimah ini berada dibawah naungan Pondok Pesantren Annuqayah dan sudah memuat baik program akademik keagamaan dan umum, sebagai berikut:
 
