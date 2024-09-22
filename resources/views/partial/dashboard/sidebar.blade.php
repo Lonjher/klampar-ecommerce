@@ -8,40 +8,50 @@
 <!-- End Utama Nav -->
 
 <!-- Start Dashboard Nav -->
-@canany(['admin', 'seller'])
 <li class="nav-item">
-    <a class="nav-link {{ Request::is('dashboard/'. Auth::user()->username) ? 'active' : '' }}" href="/dashboard/{{ Auth::user()->username }}">
+    <a class="nav-link {{ Request::is('dashboard/' . Auth::user()->username) ? 'active' : '' }}"
+        href="/dashboard/{{ Auth::user()->username }}">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
     </a>
 </li>
 <!-- End Dashboard Nav -->
-@endcanany
 
 {{-- Start Archive Section --}}
 {{-- #---------------------# --}}
-@canany(['admin', 'seller',])
-<li class="py-2 nav-heading text-secondary">PEMASARAN</li>
+@canany(['admin', 'seller'])
+    <li class="py-2 nav-heading text-secondary">PEMASARAN</li>
 
-<!-- Start Produk -->
-<li class="nav-item">
-    <a class="nav-link {{ Request::is('product/' . Auth::user()->username) ? 'active' : '' }}"
-        href="/product/{{ Auth::user()->username }}">
-        <i class="bi bi-shop"></i>
-        <span>Kelola Stok</span>
-    </a>
-</li>
-<!-- End Produk Nav -->
+    <!-- Start Produk -->
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('product/' . Auth::user()->username) ? 'active' : '' }}"
+            href="/product/{{ Auth::user()->username }}">
+            <i class="bi bi-shop"></i>
+            <span>Kelola Stok</span>
+        </a>
+    </li>
+    <!-- End Produk Nav -->
 @endcanany
 
 <li class="py-2 nav-heading text-secondary">PEMESANAN</li>
-
-<li class="nav-item">
-    <a class="nav-link {{ Request::is('reservation*') ? 'active' : '' }}" href="/reservation/{{ Auth::user()->username }}">
-        <i class="bi bi-basket"></i>
-        <span>Pemesanan Produk</span>
-    </a>
-</li><!-- End Listening Page Nav -->
+@canany(['admin', 'seller'])
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('reservation*') ? 'active' : '' }}"
+            href="/reservation/{{ Auth::user()->username }}">
+            <i class="bi bi-basket"></i>
+            <span>Pemesanan Produk</span>
+        </a>
+    </li>
+@endcanany
+@if (Auth::user()->role_id == 3)
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('user-order*') ? 'active' : '' }}"
+            href="/user-order/{{ Auth::user()->username }}">
+            <i class="bi bi-basket"></i>
+            <span>Pemesanan Produk</span>
+        </a>
+    </li>
+@endif
 
 {{-- Start Master Section --}}
 {{-- #---------------------# --}}
@@ -55,7 +65,8 @@
     </li>
 @endcan
 <li class="nav-item">
-    <a class="nav-link {{ Request::is('user-profil*') ? 'active' : '' }}" href="/user-profile/{{ Auth::user()->username }}">
+    <a class="nav-link {{ Request::is('user-profil*') ? 'active' : '' }}"
+        href="/user-profile/{{ Auth::user()->username }}">
         <i class="bi bi-person-lines-fill"></i>
         <span>Profil Pengguna</span>
     </a>

@@ -22,4 +22,9 @@ class Reservation extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function penjual():BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -124,7 +124,7 @@
                                 <td class="flex-row gap-2 d-flex">
                                     <form method="POST" action="/delete/{{ $product->id }}">
                                         @csrf
-                                        <button class="rounded shadow btn btn-delete">
+                                        <button class="rounded shadow btn btn-delete confirm-delete">
                                             <i class="bi bi-trash" style="font-size: 12px;"></i>
                                         </button>
                                     </form>
@@ -158,11 +158,39 @@
     @include('dashboard.update-stock')
 
     @push('script')
-        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-            crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/2.1.5/js/dataTables.min.js"></script>
         <script>
             new DataTable('#stock-table');
+        </script>
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    title: 'Sukses',
+                    icon: 'success',
+                    text: '{{ session('success') }}',
+                    timer: 3000
+                })
+            </script>
+        @endif
+
+        <script>
+            $('.confirm-delete').on('click', function(event) {
+                let form = $(this).closest('form')
+                event.preventDefault()
+                Swal.fire({
+                    title: "Yakin mau menghapus data?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, Hapus!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit()
+                    }
+                });
+            })
         </script>
     @endpush
 @endpush

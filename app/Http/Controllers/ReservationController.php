@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class ReservationController extends Controller
@@ -40,7 +41,7 @@ class ReservationController extends Controller
         $validData = $request->validate([
             'description' => 'required|min:10',
             'quantity' => 'required|numeric|min:1',
-            'deadline' => 'required|date|after:tomorrow'
+            'deadline' => 'required|date'
         ]);
 
         $validData['sample'] = $request->file('sample')->store('reservations');
@@ -48,7 +49,7 @@ class ReservationController extends Controller
         $validData['penjual_id'] = $request->penjual_id;
         $validData['deadline'] = Carbon::parse($request->deadline)->translatedFormat('Y-m-d');;
         Reservation::create($validData);
-        return back()->with('success', 'Data Pesanan berhasil disimpan!');
+        return redirect()->back()->with('success', 'Data Pesanan berhasil disimpan!');
     }
 
     /**
@@ -87,6 +88,15 @@ class ReservationController extends Controller
 
         Storage::delete($order->sample);
         $order->delete();
-        return back()->with('success', 'Data Pemesan berhasil dihapus');
+        return redirect()->back()->with('success', 'Data Pemesan berhasil dihapus');
+    }
+
+    public function hapus(string $id)
+    {
+        $order = Reservation::findOrFail($id);
+
+        Storage::delete($order->sample);
+        $order->delete();
+        return redirect()->back('/')->with('success', 'Data Pemesan berhasil dihapus');
     }
 }

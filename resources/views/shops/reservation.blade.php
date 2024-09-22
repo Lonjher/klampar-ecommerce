@@ -14,14 +14,15 @@
                 <div class="p-4">
                     <h3 class="text-lg font-semibold text-gray-500 mb-3">Informasi Penjual</h3>
                     <div class="flex items-center space-x-3">
-                        <img class="w-12 h-12 rounded-full object-cover" src="{{ asset('assets/img/profil.jpg') }}"
+                        <img class="w-12 h-12 rounded-full object-cover" src="{{ asset('storage/' . $user->avatar) }}"
                             alt="Seller Profile Picture">
                         <div>
                             <a href="">
                                 <p class="font-medium text-blue-600 hover:text-blue-500">{{ $user->name }}</p>
                             </a>
                             <span class="flex">
-                                <span>{{ $user->alamat->dusun }} {{ $user->alamat->desa }} {{ $user->alamat->kecamatan }} {{ $user->alamat->kabupaten }}</span>
+                                <span>{{ $user->alamat->dusun }} {{ $user->alamat->desa }} {{ $user->alamat->kecamatan }}
+                                    {{ $user->alamat->kabupaten }}</span>
                             </span>
                         </div>
                     </div>
@@ -77,7 +78,7 @@
                                 <input datepicker id="default-datepicker" type="text" name="deadline"
                                     value="{{ old('deadline') }}"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Pilih taggal" datepicker-autohide datepicker-format="d.m.yyyy" required>
+                                    placeholder="Pilih taggal" datepicker-autohide datepicker-format="yyyy-m-d" required>
                             </div>
 
                         </div>
@@ -95,10 +96,8 @@
         <script>
             function previewImage() {
                 const image = document.querySelector('#sample');
-                // const old_img = document.querySelector('#old_image');
                 const imgPreview = document.querySelector('.img-preview');
 
-                // old_img.style.display = 'none';
                 imgPreview.style.display = 'block';
 
                 const oFReader = new FileReader();
@@ -108,6 +107,18 @@
                     imgPreview.src = oFREvent.target.result;
                 }
             }
+            console.log(Swal)
         </script>
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    title: 'Sukses',
+                    icon: 'success',
+                    type: 'success',
+                    text: '{{ session('success') }}',
+                    timer: 3000
+                })
+            </script>
+        @endif
     @endpush
 @endsection

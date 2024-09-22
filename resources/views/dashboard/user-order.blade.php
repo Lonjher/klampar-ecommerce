@@ -78,7 +78,7 @@
                         <tr>
                             <th scope="col">No.</th>
                             <th scope="col">Contoh</th>
-                            <th scope="col">Pemesan</th>
+                            <th scope="col">Penjual</th>
                             <th scope="col">Uraian</th>
                             <th scope="col">Jumlah</th>
                             <th scope="col">Tgl. Ambil</th>
@@ -91,7 +91,7 @@
                             <tr>
                                 <th class="text-center" scope="row">{{ $no + 1 }}</th>
                                 <td><img src="{{ asset('storage/' . $order->sample) }}" alt="Image" width="50px"></td>
-                                <td><a href="/profil/{{ $order->user->username }}">{{ $order->user->name }}</a></td>
+                                <td><a href="/profil/{{ $order->user->username }}">{{ $order->penjual->username }}</a></td>
                                 <td>{{ $order->description }}</td>
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ $order->deadline }}</td>
@@ -105,7 +105,7 @@
                                     @endif
                                 </td>
                                 <td class="flex-row gap-2 d-flex">
-                                    <form method="POST" action="/reservation-delete/{{ $order->id }}">
+                                    <form method="POST" action="/user-reservation-delete/{{ $order->id }}">
                                         @csrf
                                         <button class="rounded shadow btn btn-delete confirm-delete">
                                             <i class="bi bi-trash" style="font-size: 12px;"></i>
@@ -154,6 +154,16 @@
                 ]
             });
         </script>
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    title: 'Sukses',
+                    icon: 'success',
+                    text: '{{ session('success') }}',
+                    timer: 3000
+                })
+            </script>
+        @endif
         <script>
             $('.confirm-delete').on('click', function(event) {
                 let form = $(this).closest('form')

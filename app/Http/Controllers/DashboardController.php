@@ -14,10 +14,11 @@ class DashboardController extends Controller
         $stockCount = $user->product->count();
         $orderCount = $user->reservation->count();
         $userCount = User::count();
+        $userOrderCount = $user->order()->count();
 
         return view('dashboard.index', [
             'title' => 'Dashboard'
-        ], compact('userCount', 'orderCount', 'stockCount'));
+        ], compact('userCount', 'orderCount', 'stockCount', 'userOrderCount'));
     }
 
     public function listUser()

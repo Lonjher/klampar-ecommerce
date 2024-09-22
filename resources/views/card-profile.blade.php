@@ -46,7 +46,7 @@
                         </a>
                         @if ($user->role_id = 1 && $user->role_id = 2)
                             <!-- Buat Pesanan Button -->
-                            <a href="/order-product/{{ Auth::user()->username }}" class="bg-blue-500 delay-150 transition duration-150 ease-out hover:ease-in text-white px-6 py-2 rounded-lg hover:scale-110 hover:-translate-y-1 hover:bg-blue-600">
+                            <a href="/order-product/{{ $user->username }}" class="bg-blue-500 delay-150 transition duration-150 ease-out hover:ease-in text-white px-6 py-2 rounded-lg hover:scale-110 hover:-translate-y-1 hover:bg-blue-600">
                                 <i class="bi bi-basket mr-2"></i>
                                 Buat Pesanan
                             </a>

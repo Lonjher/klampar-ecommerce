@@ -69,7 +69,8 @@
                                 </div>
                                 <div class="more-info">
                                     <div class="flex flex-col">
-                                        <span>{{ $product->user->alamat->kecamatan }} {{ $product->user->alamat->kabupaten }}</span>
+                                        <span>{{ $product->user->alamat->kecamatan }}
+                                            {{ $product->user->alamat->kabupaten }}</span>
                                         <span
                                             class="text-sm text-gray-400">{{ $product->created_at->diffForHumans() }}</span>
                                     </div>
@@ -89,8 +90,8 @@
                         </div>
                     @empty
                         <div class="p-4 grid align-middle justify-center sm:col-span-2 md:col-span-3 lg:col-span-5 w-full">
-                            <div class="flex justify-center"><img src="{{ asset('assets/svg/no-data.svg') }}" alt="no-data"
-                                    class="lg:w-64 md:w-60 sm:w-60"></div>
+                            <div class="flex justify-center"><img src="{{ asset('assets/svg/no-data.svg') }}"
+                                    alt="no-data" class="lg:w-64 md:w-60 sm:w-60"></div>
                             <span class="font-medium text-gray-500">Ups, Data Kosong, Hubungi admin untuk update produk
                                 terbaru!</span>
                         </div>
@@ -113,5 +114,17 @@
                     .name = 'menu', menu.classList.add('hidden'), tombol.classList.add('hidden'))
             }
         </script>
+        @if (session('success'))
+            @push('script')
+                <script>
+                    Swal.fire({
+                        title: 'Sukses',
+                        icon: 'success',
+                        text: '{{ session('success') }}',
+                        timer: 3000
+                    })
+                </script>
+            @endpush
+        @endif
     @endpush
 @endsection

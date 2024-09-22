@@ -49,7 +49,7 @@ class ProductController extends Controller
             'quantity' => $request->quantity,
             'status' => $request->status
         ]);
-        return back()->with('success', 'Produk Berhasil ditambahkan!');
+        return redirect()->back()->with('success', 'Produk Berhasil ditambahkan!');
     }
 
     public function destroy(string $id_product){
@@ -57,7 +57,7 @@ class ProductController extends Controller
 
         Storage::delete($product->product_image);
         $product->delete();
-        return back();
+        return redirect()->back()->with('success', 'Produk berhasil dihapus!');
     }
 
     public function edit(string $id_product): View
@@ -99,7 +99,7 @@ class ProductController extends Controller
             $product->update($validData);
         }
 
-        return back()->with(['success', 'Produk Berhasil diubah!']);
+        return redirect()->back()->with('success', 'Produk Berhasil diubah!');
     }
 
     public function show(Product $product){

@@ -10,6 +10,11 @@
     <!-- Favicons -->
     <link href="{{ asset('assets/img/logo.png') }}" rel="icon">
 
+    {{-- Sweet Alert 2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- Alphine JS --}}
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <!-- Google Font -->
@@ -67,6 +72,18 @@
             color: #000;
             /*Set to match the Tailwind colour you want the active one to be */
         }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
     </style>
 
 </head>
@@ -74,9 +91,12 @@
 <body class="relative bg-white_navy">
     @include('partial.navbar')
     @yield('main')
-    @stack('script')
     {{-- <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> --}}
-    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@4.5.1ico0-0/dist/ionicons/ionicons.esm.js"></script>
+    {{-- Ionic Icon --}}
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    @stack('script')
 </body>
 
 </html>

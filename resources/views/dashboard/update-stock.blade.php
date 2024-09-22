@@ -74,7 +74,7 @@
                         <div class="mb-3">
                             <label for="description" class="form-label">Detail</label>
                             <textarea name="description" placeholder="Write some description here..."
-                                class="form-control input-blue form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                class="form-control input-blue form-control-sm" id="exampleFormControlTextarea1" rows="3">{{ $product->description }}</textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary btn-sm">Submit</button>

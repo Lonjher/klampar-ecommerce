@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
                 'name' => 'Lailur Rahman',
                 'email' => 'ilur@ilur.com',
                 'username' => 'ilur',
-                'avatar' => 'assets/img/user1.jpg',
+                'avatar' => 'avatars/drwjtFvel0OQwacCSFe9INj4kb5lP25MPLMuZ1sA.jpg',
                 'wa_number' => '082228462025',
                 'role_id'=> 2,
                 'password' => Hash::make('22222222')
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
                 'name' => 'Filman Agil Sabata',
                 'email' => 'agil@agil.com',
                 'username' => 'agil',
-                'avatar' => 'assets/img/user3.jpg',
+                'avatar' => 'avatars/drwjtFvel0OQwacCSFe9INj4kb5lP25MPLMuZ1sA.jpg',
                 'wa_number' => '087884734507',
                 'role_id'=> 2,
                 'password' => Hash::make('33333333')
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
                 'name' => 'User Biasa',
                 'email' => 'user@user.com',
                 'username' => 'user-biasa',
-                'avatar' => 'assets/img/user4.jpg',
+                'avatar' => 'avatars/drwjtFvel0OQwacCSFe9INj4kb5lP25MPLMuZ1sA.jpg',
                 'wa_number' => '085604749536',
                 'role_id'=> 3,
                 'password' => Hash::make('44444444')

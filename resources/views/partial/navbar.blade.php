@@ -13,29 +13,82 @@
         </div>
     </div>
     <div id="menu" class="z-0 items-center justify-center hidden w-full gap-3 list-none md:flex">
-        <li class="my-4 md:my-0 lg:my-0">
-            <a href="{{ route('home') }}"
-                class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">
-                Beranda
-            </a>
-        </li>
-        {{-- <li class="my-4 md:my-0 lg:my-0">
-            <a href="{{ route('shop-reservation') }}"
-                class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">Pemesanan
-            </a>
-        </li> --}}
-        @canany(['admin', 'seller'])
+        <div class="md:flex md:gap-3 hidden">
             <li class="my-4 md:my-0 lg:my-0">
-                <a href="/dashboard/{{ Auth::user()->username }}"
-                    class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">Dashboard
+                <a href="{{ route('home') }}"
+                    class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">
+                    Beranda
                 </a>
             </li>
-        @endcanany
-        <li class="my-4 md:my-0 lg:my-0">
-            <a href="#"
-                class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">Tentang
-            </a>
-        </li>
+            <li class="my-4 md:my-0 lg:my-0">
+                <a href="#"
+                    class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">Tentang
+                </a>
+            </li>
+        </div>
+        <div class="md:hidden">
+            <li class="my-4 md:my-0 lg:my-0">
+                <a href="{{ route('home') }}"
+                    class="block px-2 py-2 align-middle rounded-md text-sm hover:bg-blue-200 text-gray-700">
+                    <span class="h-full flex items-center">
+                        <ion-icon name="home-outline" class="text-3xl"></ion-icon>
+                        <span class="ml-2">Beranda</span>
+                    </span>
+                </a>
+                <a href="{{ route('home') }}"
+                    class="block px-2 py-2 align-middle rounded-md text-sm hover:bg-blue-200 text-gray-700">
+                    <span class="h-full flex items-center">
+                        <ion-icon name="book-outline" class="text-3xl"></ion-icon>
+                        <span class="ml-2">Tentang</span>
+                    </span>
+                </a>
+                @auth
+                    <a href="/user-profile/{{ Auth::user()->username }}"
+                        class="block px-2 py-2 align-middle text-sm rounded-md hover:bg-blue-200 text-gray-700"
+                        role="menuitem" tabindex="-1" id="user-menu-item-0">
+                        <span class="h-full flex items-center">
+                            <ion-icon name="person-circle-outline" class="text-3xl"></ion-icon>
+                            <span class="ml-2">Profil Anda</span>
+                        </span>
+                    </a>
+                @endauth
+                @auth
+                    <a href="/dashboard/{{ Auth::user()->username }}"
+                        class="block ml-1 px-2 py-2 align-middle rounded-md text-sm border-b hover:bg-blue-200 border-gray-400 text-gray-700"
+                        role="menuitem" tabindex="-1" id="user-menu-item-0">
+                        <span class="h-full flex items-center">
+                            <ion-icon name="apps-outline" class="text-2xl"></ion-icon>
+                            <span class="ml-2">Dashboard</span>
+                        </span>
+                    </a>
+                @endauth
+            </li>
+            @auth
+                <button class="px-4 py-2 text-sm flex justify-center  text-gray-700 hover:bg-red-200 w-full">
+                    <span class="h-full flex items-center">
+                        <ion-icon name="log-out-outline" class="text-2xl"></ion-icon>
+                        <span class="ml-2">Keluar</span>
+                    </span>
+                </button>
+            @else
+                <li class="w-full flex justify-center items-center gap-2">
+                    <a href="{{ route('login') }}"
+                        class="py-1 text-sm text-gray-900 font-medium flex items-center bg-blue-100 transition ease-in-out border duration-300 delay-150 border-gray-200 rounded-lg px-4 focus:outline-none hover:bg-blue-400 hover:text-white hover:-translate-y-1 hover:scale-100 focus:z-10 focus:ring-4 focus:ring-blue-400">
+                        <span class="h-full flex items-center justify-start gap-2">
+                            <ion-icon name="log-in-outline" class="text-3xl"></ion-icon>
+                            <span>Login</span>
+                        </span>
+                    </a>
+                    <a href="{{ route('register') }}"
+                        class="px-5 py-2 text-sm text-gray-900 bg-white font-medium border hover:-translate-y-1 transition ease-in-out duration-300 delay-150 hover:scale-100 border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-500 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                        <span class="h-full flex items-center justify-start gap-2">
+                            <ion-icon name="person-add-outline" class="text-2xl"></ion-icon>
+                            <span>Daftar</span>
+                        </span>
+                    </a>
+                </li>
+            @endauth
+        </div>
     </div>
     <div id="tombol" class="z-0 flex-row items-center justify-end hidden gap-2 my-4 md:my-0 lg:my-0 md:flex">
         @auth
@@ -48,17 +101,37 @@
                             id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                             <span class="absolute -inset-1.5"></span>
                             <span class="sr-only">Buka Menu Pengguna</span>
-                            <img class="h-8 w-8 rounded-full" src="{{ asset('storage/' . Auth::user()->avatar) }}"
-                                alt="Avatar">
+                            <div class="rounded-full w-12 h-12 overflow-hidden">
+                                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="avatar"
+                                    class="w-full h-full object-cover rounded-full">
+                            </div>
                         </button>
                     </div>
-                    <div class="absolute right-0 z-10 mt-2 lg:w-48 w-full origin-top-right rounded-md py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden flex-col dropdown bg-white"
+                    <div class="absolute md:right-0 lg:right-0 z-10 mt-2 w-48 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden menu flex-col dropdown bg-white"
                         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <!-- Active: "bg-gray-100", Not Active: "" -->
-                        <a href="/user-profile/{{ Auth::user()->username }}" class="block px-4 py-2 text-sm border-b border-gray-400 text-gray-700"
-                            role="menuitem" tabindex="-1" id="user-menu-item-0">Profil Anda</a>
-                        <button
-                            class="ml-4 px-5 mt-4 rounded-lg transition ease-in-out text-sm text-white delay-150 bg-red-400 hover:-translate-y-1 hover:scale-100 hover:bg-red-500  focus:z-10 focus:ring-4 focus:ring-red-200 duration-300">Keluar</button>
+                        <a href="/user-profile/{{ Auth::user()->username }}"
+                            class="block px-2 py-2 align-middle text-sm hover:bg-blue-200 text-gray-700" role="menuitem"
+                            tabindex="-1" id="user-menu-item-0">
+                            <span class="h-full flex items-center">
+                                <ion-icon name="person-circle-outline" class="text-3xl"></ion-icon>
+                                <span class="ml-2">Profil Anda</span>
+                            </span>
+                        </a>
+
+                        <a href="/dashboard/{{ Auth::user()->username }}"
+                            class="block ml-1 px-2 py-2 align-middle text-sm border-b hover:bg-blue-200 border-gray-400 text-gray-700"
+                            role="menuitem" tabindex="-1" id="user-menu-item-0">
+                            <span class="h-full flex items-center">
+                                <ion-icon name="apps-outline" class="text-2xl"></ion-icon>
+                                <span class="ml-2">Dashboard</span>
+                            </span>
+                        </a>
+                        <button class="px-4 py-2 text-sm flex justify-center  text-gray-700 hover:bg-red-200 w-full">
+                            <span class="h-full flex items-center">
+                                <ion-icon name="log-out-outline" class="text-2xl"></ion-icon>
+                                <span class="ml-2">Keluar</span>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -76,13 +149,13 @@
                 dropDown.classList.toggle("hidden")
             }
 
-            function Menu(e){
+            function Menu(e) {
                 const menu = document.getElementById('menu')
 
-                if(menu.classList.contains('hidden')){
+                if (menu.classList.contains('hidden')) {
                     e.setAttribute('name', 'close')
                     menu.classList.remove('hidden')
-                }else {
+                } else {
                     e.setAttribute('name', 'menu')
                     menu.classList.add('hidden')
                 }

@@ -26,6 +26,7 @@ class User extends Authenticatable
         'avatar',
         'banner',
         'wa_number',
+        'role_id',
         'password',
     ];
 
@@ -65,6 +66,11 @@ class User extends Authenticatable
     public function reservation(): HasMany
     {
         return $this->hasMany(Reservation::class, 'penjual_id', 'id');
+    }
+
+    public function order(): HasMany
+    {
+        return $this->hasMany(Reservation::class, 'user_id', 'id');
     }
 
     public function role(): BelongsTo
