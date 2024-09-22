@@ -18,12 +18,18 @@ Penelitian ini mengambil studi lapangan dengan permasalah pemasaran produk batik
 - pembuatan Eco-Brick
 - Terjun dalam issue-issue pendidikan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+  Pendekatan pemecahan masalah yang kami gunakan sifatnya praktis, yaitu dengan halnya dalam Lean, metode Practical Problem Solving merupakan pendekatan sistematis untuk memecahkan masalah besar dan kecil dalam suatu organisasi. Kami akhirnya menawarkan masyarakat untuk membangun sebuah Sistem Informasi yang dapat menjadi media menjembatani antara konsumen produk dan produsen produk dalam melakukan proses transaksi dan pemasaran produk Batik TUlis Klampar Proppo Pamekasan. Metode yang digunakan dalam penelitian ini adalah metode descriptive qualitatif. Sedangkan metode pengembangan sistem aplikasi, kami menggunakan metode Waterflow dan observasi serta wawancara sebagai metode pengumpulan data.
+  Sebagai tahapan awal, kami melakukan observasi lapangan dand wawancara kepada pihak-pihak pengelola usaha batik terkait kebutuhan sistem yang akan dibangun. Selanjutnya, kami analisis setiap kemungkinan data yang dihasilkan yang kemudian kami normalisasikan untuk tahapan berikutnya. Sebelum tahapan implementasi program, kami siapkan rancangan aplikasi sederhana berupa alur diagram dan semacamnya sebagai acuan pengerjaan program pada nantinya. 
 
-## Laravel Sponsors
+## Teknologi
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
+Dalam pengembangan sistem ini, ada beberapa teknologi yang kami pergunakan, antara lain:
+1. Full Stack Web Devolopment Laravel
+2. DataTables Client Side
+3. SweetAlert2
+4. Github Version Control
+5. At all.
+   
 ### Premium Partners
 
 - **[Vehikl](https://vehikl.com/)**
@@ -42,7 +48,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ## Universitas Annuqayah
 
-<p align="center"><a href="https://ua.ac.id" target="_blank"><img src="https://github.com/Lonjher/klampar-ecommerce/blob/main/public/assets/img/ua.png" width="400" alt="UA Logo"></a></p>
+<p align="center"><a href="https://ua.ac.id" target="_blank"><img src="https://github.com/Lonjher/klampar-ecommerce/blob/main/public/assets/img/ua.png" width="200" alt="UA Logo"></a></p>
 
 Universitas Annuqayah merupakan sebuah kampus berlokasi di desa Guluk-guluk Sumenep Madura. Kampus yang memiliki orientasi lebih pada Tatakrama dan Akhlaqul Karimah ini berada dibawah naungan Pondok Pesantren Annuqayah dan sudah memuat baik program akademik keagamaan dan umum, sebagai berikut:
 
