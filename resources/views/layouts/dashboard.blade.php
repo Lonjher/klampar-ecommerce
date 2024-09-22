@@ -50,7 +50,7 @@
                     <a class="breadcrumb-item {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
                     <a class="breadcrumb-item {{ Request::is('dashboard') ? 'active' : '' }}"
                         href="/dashboard">Dashboard</a>
-                    @if (Request::is('stock') || Request::is('sold') || Request::is('transaction') || Request::is('reservation'))
+                    @if (Request::is('product*') || Request::is('user-profile*') || Request::is('reservation*') || Request::is('user-list*'))
                         <a class="breadcrumb-item active">{{ $title }}</a>
                     @endif
                 </ol>

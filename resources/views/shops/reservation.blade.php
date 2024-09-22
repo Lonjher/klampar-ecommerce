@@ -11,7 +11,22 @@
                 <img src="{{ asset('assets/img/order.png') }}" alt="order">
             </div>
             <div class="w-full">
-                <form class="grid-flow-row p-4 mx-auto md:grid" action="{{ route('shop-reservation') }}" method="POST"
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-500 mb-3">Informasi Penjual</h3>
+                    <div class="flex items-center space-x-3">
+                        <img class="w-12 h-12 rounded-full object-cover" src="{{ asset('assets/img/profil.jpg') }}"
+                            alt="Seller Profile Picture">
+                        <div>
+                            <a href="">
+                                <p class="font-medium text-blue-600 hover:text-blue-500">{{ $user->name }}</p>
+                            </a>
+                            <span class="flex">
+                                <span>{{ $user->alamat->dusun }} {{ $user->alamat->desa }} {{ $user->alamat->kecamatan }} {{ $user->alamat->kabupaten }}</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <form class="grid-flow-row p-4 mx-auto md:grid" action="{{ route('order-product') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="col-span-2 mb-7">
@@ -47,6 +62,7 @@
                                 <span class="mt-2 text-sm text-red-600">{{ $message }}</span>
                             @enderror
                         </div>
+                        <input type="text" value="{{ $user->id }}" class="hidden" name="penjual_id">
                         <div class="w-full mb-3">
                             <label for="deadline" class="block mb-2 text-sm text-gray-900 dark:text-white">Tanggal
                                 Ambil</label>

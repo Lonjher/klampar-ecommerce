@@ -52,7 +52,7 @@
             </nav>
 
             <div class="w-full px-6">
-                <div class="grid justify-center gap-3 sm:grid-cols-2 sm:justify-center md:grid-cols-3 lg:grid-cols-5">
+                <div class="grid justify-center gap-2 sm:grid-cols-2 sm:justify-center md:grid-cols-3 lg:grid-cols-5">
                     @forelse ($products as $product)
                         <div class="flex flex-col w-56 rounded-lg shadow-md h-96">
                             <div class="flex flex-1 rounded-t-lg"
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="more-info">
                                     <div class="flex flex-col">
-                                        <span>3-7 hari | Kab. Pamekasan</span>
+                                        <span>{{ $product->user->alamat->kecamatan }} {{ $product->user->alamat->kabupaten }}</span>
                                         <span
                                             class="text-sm text-gray-400">{{ $product->created_at->diffForHumans() }}</span>
                                     </div>
@@ -78,7 +78,7 @@
                                             class="col-span-3 py-2 mt-5 transition ease-in-out delay-150 text-teal-50 bg-blue-700 hover:-translate-y-0.5 hover:scale-110 hover:bg-blue-800 duration-300 rounded-lg hover:font-bold text-center items-center focus:ring-4 focus:outline-none">
                                             <span>Deskripsi</span>
                                         </a>
-                                        <a href="https://wa.me/6281937331166/?text=Halo,%20saya%20ingin%20memesan%20produk%20Nama%20Produk%20seharga%20Rp%20150.000"
+                                        <a href="https://wa.me/{{ $product->user->wa_number }}/?text=Halo,%20apakah%20produk%20dengan%20nama%20{{ $product->product_name }}%20,%20dengan%20harga%20Rp%20{{ Number::format($product->price_sell) }}%20masih%20ada?"
                                             target="_blank"
                                             class="col-span-1 mt-5 flex align-middle font-medium justify-center transition ease-in-out delay-100 text-teal-950 hover:text-teal-50 text-xl bg-green-200 hover:-translate-y-0.5 hover:scale-110 hover:bg-green-500 duration-300 rounded-lg items-center focus:ring-4 focus:outline-none">
                                             <i class="bi bi-whatsapp"></i>

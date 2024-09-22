@@ -54,9 +54,12 @@
         </style>
         <link rel="stylesheet" href="//cdn.datatables.net/2.1.5/css/dataTables.dataTables.min.css">
     @endsection
+    @push('nav-bar')
+        @include('partial.dashboard.navbar')
+    @endpush
     <div class="p-3 mb-3 bg-white border rounded border-light-subtle border-top-1 sd-flex align-items-center">
         <div class="flex-row gap-3 p-3 m-0 mb-3 overflow-auto card recent-sales d-flex align-items-center">
-            <img src="{{ asset('assets/img/reservation.svg') }}" alt="reservation" width="50">
+            <img src="{{ asset('assets/svg/reservation.png') }}" class="mx-4" alt="reservation" width="50">
             <span class="text-primary fw-bold fs-5">Kelola Pesanan Batik</span>
         </div>
         <div class="overflow-auto card recent-sales">
@@ -75,7 +78,7 @@
                         <tr>
                             <th scope="col">No.</th>
                             <th scope="col">Contoh</th>
-                            <th scope="col">User Id</th>
+                            <th scope="col">Pemesan</th>
                             <th scope="col">Uraian</th>
                             <th scope="col">Jumlah</th>
                             <th scope="col">Tgl. Ambil</th>
@@ -87,19 +90,18 @@
                         @forelse ($orders as $no => $order)
                             <tr>
                                 <th class="text-center" scope="row">{{ $no + 1 }}</th>
-                                <td><img src="storage/{{ $order->sample }}" alt="Image" width="50px"></td>
-                                <td>{{ $order->user_id }}</td>
-                                <td><a href="#" class="text-primary">{{ $order->description }}</a>
-                                </td>
+                                <td><img src="{{ asset('storage/' . $order->sample) }}" alt="Image" width="50px"></td>
+                                <td><a href="/profil/{{ $order->user->username }}">{{ $order->user->name }}</a></td>
+                                <td>{{ $order->description }}</td>
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ $order->deadline }}</td>
                                 <td>
                                     @if ($order->status)
+                                        <span class="w-auto p-1 text-center text-gray-500 rounded small"
+                                            style="background-color: #fa1212;">Selesai</span>
+                                    @else
                                         <span class="p-1 text-center text-white rounded small"
                                             style="background-color: #d7f04c;">Pending</span>
-                                    @else
-                                        <span class="w-auto p-1 text-center text-white rounded small"
-                                            style="background-color: #fa1212;">Selesai</span>
                                     @endif
                                 </td>
                                 <td class="flex-row gap-2 d-flex">
@@ -117,14 +119,14 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr>
-                                <td colspan="8" style="background-color: #f7d5d5" class="p-2 rounded">
+                            <div class="w-full">
+                                <div colspan="8" style="background-color: #f7d5d5" class="p-2 rounded">
                                     <div class="flex-row gap-2 d-flex align-items-center justify-content-center fs-5">
                                         <i class="bi bi-database-dash"></i>
                                         <span class="fs-6">Data Pesanan Kosong</span>
                                     </div>
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                         @endforelse
                     </tbody>
                 </table>
@@ -140,6 +142,11 @@
         <script>
             let table = new DataTable('#myTable', {
                 columns: [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
                     null,
                     null,
                     null,

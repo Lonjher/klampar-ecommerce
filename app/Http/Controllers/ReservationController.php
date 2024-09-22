@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ReservationController extends Controller
@@ -11,9 +14,9 @@ class ReservationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(User $user)
     {
-        $orders = Reservation::all();
+        $orders = $user->reservation()->paginate(10);
 
         return view('dashboard.reservation', [
             'title' => 'Pemesanan',
@@ -34,15 +37,29 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validData = $request->validate([
+            'description' => 'required|min:10',
+            'quantity' => 'required|numeric|min:1',
+            'deadline' => 'required|date|after:tomorrow'
+        ]);
+
+        $validData['sample'] = $request->file('sample')->store('reservations');
+        $validData['user_id'] = Auth::user()->id;
+        $validData['penjual_id'] = $request->penjual_id;
+        $validData['deadline'] = Carbon::parse($request->deadline)->translatedFormat('Y-m-d');;
+        Reservation::create($validData);
+        return back()->with('success', 'Data Pesanan berhasil disimpan!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        return view('shops.reservation', [
+            'title' => 'Pemesanan',
+            'user' => $user
+        ]);
     }
 
     /**

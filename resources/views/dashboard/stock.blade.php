@@ -65,7 +65,7 @@
     @endpush
     <div class="p-3 mb-3 bg-white border rounded border-light-subtle border-top-1 sd-flex align-items-center">
         <div class="flex-row gap-3 p-3 m-0 mb-3 overflow-auto card recent-sales d-flex align-items-center">
-            <i class="bi bi-shop fs-3" style="color: #2b99d8"></i>
+            <img src="{{ asset('assets/svg/stock.png') }}" class="mx-4" alt="stock" width="5%">
             <span class="text-primary fw-bold fs-5">Kelola Stok Barang</span>
         </div>
         <div class="overflow-auto card recent-sales">
@@ -122,33 +122,34 @@
                                     @endif
                                 </td>
                                 <td class="flex-row gap-2 d-flex">
-                                    <form method="POST" action="/delete/{{ $product->id_product }}">
+                                    <form method="POST" action="/delete/{{ $product->id }}">
                                         @csrf
                                         <button class="rounded shadow btn btn-delete">
                                             <i class="bi bi-trash" style="font-size: 12px;"></i>
                                         </button>
                                     </form>
-                                    <a data-bs-toggle="modal" data-bs-target="#update-produk{{ $product->id_product }}"
+                                    <a data-bs-toggle="modal" data-bs-target="#update-produk{{ $product->id }}"
                                         class="rounded shadow btn btn-edit">
                                         <i class="bi bi-pencil" style="font-size: 12px;"></i>
                                     </a>
                                 </td>
                             </tr>
                         @empty
-                            <tr>
-                                <td colspan="8" style="background-color: #f7d5d5" class="p-2 rounded">
+                            <div class="w-full">
+                                <div style="background-color: #f7d5d5" class="p-2 rounded">
                                     <div class="flex-row gap-2 d-flex align-items-center justify-content-center fs-5">
                                         <i class="bi bi-database-dash"></i>
                                         <span class="fs-6">Data Produk Kosong</span>
                                     </div>
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                         @endforelse
                     </tbody>
                 </table>
             </div>
 
         </div>
+
     </div>
 
     <!-- Modal Tambah -->

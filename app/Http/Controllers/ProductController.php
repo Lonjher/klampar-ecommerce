@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     public function index(User $user)
     {
-        $stocks = DB::table('products')->where('user_id', '=', $user->id_user)->simplePaginate(10);
+        $stocks = $user->product()->paginate(10);
 
         return view('dashboard.stock',  [
             'title' => ' Stock',
@@ -39,7 +39,7 @@ class ProductController extends Controller
         // store image
         $validData['product_image'] = $request->file('product_image')->store('stocks');
         Product::create([
-            'user_id' => Auth::user()->id_user,
+            'user_id' => Auth::user()->id,
             'product_image' => $validData['product_image'],
             'slug'=> Str::slug($request->product_name,'-','id'),
             'product_name' => $request->product_name,

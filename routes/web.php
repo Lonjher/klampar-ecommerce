@@ -10,22 +10,21 @@ use App\Http\Controllers\ReservationController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products/{product:slug}', [ProductController::class, 'show']);
-Route::get('/profil', function(){
-    return view('card-profile', [
-        'title' => 'Profil'
-    ]);
-});
-
+Route::get('/profil/{user:username}', [ProfileController::class, 'show']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/shop-reservation', [HomeController::class, 'create'])->name('shop-reservation');
-    Route::post('/shop-reservation', [HomeController::class, 'store'])->name('store-reservation');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/shop-reservation', [HomeController::class, 'create'])->name('shop-reservation');
+    // Route::post('/shop-reservation', [HomeController::class, 'store'])->name('store-reservation');
+
+    Route::get('/order-product/{user:username}', [ReservationController::class, 'show']);
+    Route::post('/order-product', [ReservationController::class, 'store'])->name('order-product');
+    Route::get('/user-profile/{user:username}', [ProfileController::class, 'index']);
+    Route::post('/user-profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/user-profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::middleware(['admin', 'seller'])->group(function () {
-    Route::resource('reservation', ReservationController::class)->except('create', 'store', 'update', 'edit', 'show');
+    Route::get('/reservation/{user:username}', [ReservationController::class, 'index']);
     Route::get('/dashboard/{user:username}', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/product/{user:username}', [ProductController::class, 'index'])->name('product');
     Route::get('/edit/{id}', [ProductController::class, 'edit']);
@@ -34,9 +33,7 @@ Route::middleware(['admin', 'seller'])->group(function () {
     Route::post('/delete/{id}', [ProductController::class, 'destroy']);
 
     Route::middleware('admin')->group(function (){
-        Route::get('/users', function () {
-            return view('dashboard.list-users',  ['title' => 'Pengguna']);
-        })->name('users');
+        Route::get('/user-list', [DashboardController::class, 'listUser'])->name('users');
     });
 });
 

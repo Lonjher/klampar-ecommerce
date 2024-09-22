@@ -8,16 +8,19 @@
 <!-- End Utama Nav -->
 
 <!-- Start Dashboard Nav -->
+@canany(['admin', 'seller'])
 <li class="nav-item">
-    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard/{{ Auth::user()->username }}">
+    <a class="nav-link {{ Request::is('dashboard/'. Auth::user()->username) ? 'active' : '' }}" href="/dashboard/{{ Auth::user()->username }}">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
     </a>
 </li>
 <!-- End Dashboard Nav -->
+@endcanany
 
 {{-- Start Archive Section --}}
 {{-- #---------------------# --}}
+@canany(['admin', 'seller',])
 <li class="py-2 nav-heading text-secondary">PEMASARAN</li>
 
 <!-- Start Produk -->
@@ -29,11 +32,12 @@
     </a>
 </li>
 <!-- End Produk Nav -->
+@endcanany
 
 <li class="py-2 nav-heading text-secondary">PEMESANAN</li>
 
 <li class="nav-item">
-    <a class="nav-link {{ Request::is('reservation*') ? 'active' : '' }}" href="/reservation">
+    <a class="nav-link {{ Request::is('reservation*') ? 'active' : '' }}" href="/reservation/{{ Auth::user()->username }}">
         <i class="bi bi-basket"></i>
         <span>Pemesanan Produk</span>
     </a>
@@ -44,12 +48,18 @@
 <li class="py-2 nav-heading text-secondary">MASTER</li>
 @can('admin')
     <li class="nav-item">
-        <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="{{ route('users') }}">
+        <a class="nav-link {{ Request::is('user-list*') ? 'active' : '' }}" href="{{ route('users') }}">
             <i class="bi bi-people"></i>
             <span>Pengguna</span>
         </a>
     </li>
 @endcan
+<li class="nav-item">
+    <a class="nav-link {{ Request::is('user-profil*') ? 'active' : '' }}" href="/user-profile/{{ Auth::user()->username }}">
+        <i class="bi bi-person-lines-fill"></i>
+        <span>Profil Pengguna</span>
+    </a>
+</li>
 @if (Route::has('login') && Route::has('logout'))
     @auth
         <li class="nav-item">

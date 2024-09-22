@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,6 +33,5 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('seller', function(User $user){
             return $user->role_id == 2;
         });
-
     }
 }

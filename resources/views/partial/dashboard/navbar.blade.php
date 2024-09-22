@@ -29,16 +29,12 @@
 
     <div class="mx-5 d-flex justify-content-center align-items-center">
         @auth
-            <div class="mx-2 rounded-circle">
-                <img src="{{ auth()->user()->avatar }}" alt="avatar" width="30px" class="rounded-circle">
+            <div class="mx-2 rounded-circle" style="width: 40px; height: 40px; overflow: hidden;">
+                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="avatar" style="width: 100%; height: 100%; object-fit: cover;" class="img-fluid rounded-circle">
             </div>
             <div class="d-flex flex-column justify-content-center lh-1 ailgn-items-center profil">
                 <span class="fw-bold text-primary">{{ auth()->user()->name }} <br></span>
-                @if (auth()->user()->role_id == 1)
-                    <span class="span-text" style="font-size: 12px">Admin</span>
-                @elseif (auth()->user()->role_id == 2)
-                    <span class="span-text" style="font-size: 12px">Seller</span>
-                @endif
+                <span class="span-text mt-1" style="font-size: 12px">{{ Auth::user()->role->role_name }}</span>
             </div>
         @endauth
     </div>

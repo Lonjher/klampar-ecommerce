@@ -3,15 +3,17 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $primaryKey = 'id_user';
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +24,7 @@ class User extends Authenticatable
         'email',
         'username',
         'avatar',
+        'banner',
         'wa_number',
         'password',
     ];
@@ -49,11 +52,23 @@ class User extends Authenticatable
         ];
     }
 
-    public function product(){
-        return $this->belongsTo(Product::class);
+    public function product(): HasMany
+    {
+        return $this->hasMany(Product::class);
     }
 
-    public function alamat(){
-        return $this->belongsTo(Alamat::class);
+    public function alamat(): HasOne
+    {
+        return $this->hasOne(Alamat::class, 'user_id', 'id');
+    }
+
+    public function reservation(): HasMany
+    {
+        return $this->hasMany(Reservation::class, 'penjual_id', 'id');
+    }
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 }

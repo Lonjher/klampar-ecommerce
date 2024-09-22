@@ -1,5 +1,5 @@
 @foreach ($products as $product)
-    <div class="modal fade" id="update-produk{{ $product->id_product }}" data-bs-backdrop="static" data-bs-keyboard="false"
+    <div class="modal fade" id="update-produk{{ $product->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         @if ($errors->any())
             <div class="container alert alert-danger">
@@ -17,7 +17,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/update/{{ $product->id_product }}" style="font-size: 12px"
+                    <form method="POST" action="/update/{{ $product->id }}" style="font-size: 12px"
                         enctype="multipart/form-data">
                         @csrf
                         <div>

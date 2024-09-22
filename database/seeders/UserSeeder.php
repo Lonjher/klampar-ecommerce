@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@admin.com',
                 'username' => 'admin',
-                'avatar' => 'assets/img/profil.jpg',
+                'avatar' => 'avatars/1oQTUkIwVLhuTvuMDCeINsnTGdspfJenD1gYleme.jpg',
                 'wa_number' => '085156752475',
                 'role_id'=> 1,
                 'password' => Hash::make('11111111')
