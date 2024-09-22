@@ -73,7 +73,7 @@ Universitas Annuqayah merupakan sebuah kampus berlokasi di desa Guluk-guluk Sume
 Universitas Annuqayah menyelenggarakan program akademik dan profesional dalam mengembangkan dan menyebarkan sains dan teknologi yang bertujuan untuk menyiapkan mahasiswa sebagai anggota masyarakat yang memiliki akidah Islam berlandaskan Ahlussunnah wal Jama’ah, akhlakul karimah, memiliki kemampuan akademik dan/atau profesional dan dapat menerapkan, mengembangkan, menyebarluaskan dan/atau menciptakan sains dan teknologi, memiliki tanggung jawab yang besar untuk membangun kesejahteraan bangsa dan untuk kemajuan Islam Ahlussunnah wal Jama’ah di Negara Kesatuan Republik Indonesia.
 
 ## Struktur KKN
-
+Dosen Pembimbing Lapangan     : Dr. Mahmudi, M.Fil.I
 <table>
     <thead>
         <tr>
