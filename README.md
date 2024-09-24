@@ -166,5 +166,5 @@ Dosen Pembimbing Lapangan     : Dr. Mahmudi, M.Fil.I
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The project is licensed by KKN Posko 50 2024 Univeristas Annuqayah under circumtances.
 # klampar-ecommerce
