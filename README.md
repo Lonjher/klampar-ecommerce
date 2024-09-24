@@ -166,5 +166,5 @@ Dosen Pembimbing Lapangan     : Dr. Mahmudi, M.Fil.I
 
 ## License
 
-The project is licensed by KKN Posko 50 2024 Univeristas Annuqayah under circumtances.
+The project is licensed by KKN Posko 50 2024 Univeristas Annuqayah under circumstances.
 # klampar-ecommerce
