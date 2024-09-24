@@ -3,13 +3,18 @@
 @section('main')
     <div class="container mx-auto mt-10 carousel" style="max-width:1600px;">
         <section class="flex w-full pt-12 mx-auto bg-right bg-cover bg-nordic-gray-light md:pt-0 md:items-center"
-            style="max-width:1600px; height: 32rem; background-image: url('https://images.unsplash.com/photo-1422190441165-ec2956dc9ecc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80');">
+            style="max-width:1600px; height: 32rem; background-image: url('{{ asset('assets/img/home-banner.jpg') }}');">
 
             <div class="container mx-auto">
 
                 <div class="flex flex-col items-start justify-center w-full px-6 tracking-wide lg:w-1/2">
-                    <h1 class="my-4 text-2xl text-black">Batik Tulis Original Klampar Proppo Pamekasan</h1>
-                    <a class="inline-block text-xl leading-relaxed no-underline border-b border-gray-600 hover:text-black hover:border-black"
+                    <span class="rounded-3xl bg-gradient-to-r from-blue-500 pl-3 ">
+                        <p class="my-4 text-2xl text-black flex flex-col justify-center"><span>Sistem Informasi
+                                Pemasaran</span><span class="my-4 text-2xl text-black"> Batik Tulis Original Klampar Proppo
+                                Pamekasan
+                            </span></p>
+                    </span>
+                    <a class="inline-block text-xl leading-relaxed no-underline bg-blue-400 mt-4 hover:bg-blue-500 px-3 rounded-md border-gray-600 hover:text-black hover:border-black"
                         href="#store">products</a>
 
                 </div>
@@ -69,8 +74,6 @@
                                 </div>
                                 <div class="more-info">
                                     <div class="flex flex-col">
-                                        <span>{{ $product->user->alamat->kecamatan }}
-                                            {{ $product->user->alamat->kabupaten }}</span>
                                         <span
                                             class="text-sm text-gray-400">{{ $product->created_at->diffForHumans() }}</span>
                                     </div>
@@ -90,8 +93,8 @@
                         </div>
                     @empty
                         <div class="p-4 grid align-middle justify-center sm:col-span-2 md:col-span-3 lg:col-span-5 w-full">
-                            <div class="flex justify-center"><img src="{{ asset('assets/svg/no-data.svg') }}"
-                                    alt="no-data" class="lg:w-64 md:w-60 sm:w-60"></div>
+                            <div class="flex justify-center"><img src="{{ asset('assets/svg/no-data.svg') }}" alt="no-data"
+                                    class="lg:w-64 md:w-60 sm:w-60"></div>
                             <span class="font-medium text-gray-500">Ups, Data Kosong, Hubungi admin untuk update produk
                                 terbaru!</span>
                         </div>

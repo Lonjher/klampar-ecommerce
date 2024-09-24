@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('banner')->nullable()->default('banners/hBHKfNdXowzgCfCn8h3dMScbf4qK1Gk3Jr7KQhXc.jpg');
             $table->string('wa_number');
             $table->string('bio')->default('Masukkan bio anda disini');
-            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('role_id')->default(3);
             $table->foreign('role_id')->references('id')->on('roles');
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();

@@ -21,27 +21,27 @@ class AlamatSeeder extends Seeder
                 'kecamatan' => 'Proppo',
                 'kabupaten' => 'Pamekasan'
             ],
-            [
-                'user_id' => 2,
-                'dusun' => 'Berek Songai',
-                'desa' => 'Klampar',
-                'kecamatan' => 'Proppo',
-                'kabupaten' => 'Pamekasan'
-            ],
-            [
-                'user_id' => 3,
-                'dusun' => 'Temor Songai',
-                'desa' => 'Klampar',
-                'kecamatan' => 'Proppo',
-                'kabupaten' => 'Pamekasan'
-            ],
-            [
-                'user_id' => 4,
-                'dusun' => '-',
-                'desa' => 'Prenduan',
-                'kecamatan' => 'Prenduan',
-                'kabupaten' => 'Sumenep'
-            ]
+            // [
+            //     'user_id' => 2,
+            //     'dusun' => 'Berek Songai',
+            //     'desa' => 'Klampar',
+            //     'kecamatan' => 'Proppo',
+            //     'kabupaten' => 'Pamekasan'
+            // ],
+            // [
+            //     'user_id' => 3,
+            //     'dusun' => 'Temor Songai',
+            //     'desa' => 'Klampar',
+            //     'kecamatan' => 'Proppo',
+            //     'kabupaten' => 'Pamekasan'
+            // ],
+            // [
+            //     'user_id' => 4,
+            //     'dusun' => '-',
+            //     'desa' => 'Prenduan',
+            //     'kecamatan' => 'Prenduan',
+            //     'kabupaten' => 'Sumenep'
+            // ]
         ];
 
         foreach($adresses as $adress){

@@ -16,9 +16,18 @@ class Seller
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::check() || Auth::user()->role_id != 2){
-            abort(403);
+        // if (!Auth::check() || !Auth::user()->role_id == 2) {
+        //     abort(403);
+        // }
+        // return $next($request);
+         // Check if user is authenticated
+         if (Auth::check()) {
+            if (Auth::user()->role_id == 2) {
+                return $next($request);
+            } else {
+                return response()->json(['error' => 'Access denied. Only sellers are allowed.'], 403);
+            }
         }
-        return $next($request);
+        return redirect()->route('login');
     }
 }

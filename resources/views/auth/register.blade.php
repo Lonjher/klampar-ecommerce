@@ -18,7 +18,7 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div>
+        <div class="mt-4">
             <x-input-label for="username" :value="__('Username')" />
             <x-text-input id="username" class="block w-full mt-1" type="text" name="username" required autofocus
                 autocomplete="username" />

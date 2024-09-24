@@ -1,5 +1,5 @@
 <nav
-    class="fixed top-0 left-0 right-0 z-0 grid items-center grid-cols-1 border-b-2 border-cyan-500 px-5 py-2 bg-white shadow-sm md:grid-cols-3">
+    class="fixed top-0 left-0 right-0 z-10 grid items-center grid-cols-1 border-b-2 border-cyan-500 px-5 py-2 bg-white shadow-sm md:grid-cols-3">
     <div class="z-0 flex items-center justify-between w-full">
         <a href="/" class="w-full">
             <img src="{{ asset('assets/img/logo-batik.png') }}" alt="logo" width="100" class="md:w-32">
@@ -18,6 +18,12 @@
                 <a href="{{ route('home') }}"
                     class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">
                     Beranda
+                </a>
+            </li>
+            <li class="my-4 md:my-0 lg:my-0">
+                <a href="{{ route('documentation') }}"
+                    class="text-sm font-normal text-gray-500 transition-colors delay-100 md:text-base hover:text-blue-400">
+                    Laporan
                 </a>
             </li>
             <li class="my-4 md:my-0 lg:my-0">

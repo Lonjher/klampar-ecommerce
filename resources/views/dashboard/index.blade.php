@@ -43,10 +43,11 @@
             <div><img src="{{ asset('assets/svg/order.png') }}" width="90"></div>
             <div class="px-4 d-flex flex-column justify-content-center">
                 <span class="mb-0 h2 fw-bold">
-                    @can(['admin', 'seller'])
+                    @if (Auth::user()->role_id == 3)
+                        {{ $userOrderCount }}
+                    @else
                         {{ $orderCount }}
-                    @endcan
-                    {{ $userOrderCount }}
+                    @endif
                 </span>
                 <small>{{ __('Total Pesanan') }}</small>
             </div>

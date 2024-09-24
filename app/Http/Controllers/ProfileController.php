@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Alamat;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,11 +37,30 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
 
+        if($user->alamat() != null){
+            $alamat = Alamat::find($user->id);
+            $alamat->update([
+                'dusun' => $request->dusun,
+                'desa' => $request->desa,
+                'kecamatan' => $request->kecamatan,
+                'kabupaten' => $request->kabupaten
+            ]);
+        }else {
+            Alamat::create([
+                'user_id' => Auth::user()->id,
+                'dusun' => $request->dusun,
+                'desa' => $request->desa,
+                'kecamatan' => $request->kecamatan,
+                'kabupaten' => $request->kabupaten
+            ]);
+        }
+
         $validData = $request->validate([
             'name' => ['string', 'max:255'],
             'email' => ['string', 'lowercase', 'email', 'max:255'],
             'username' => ['string', 'lowercase', 'max:30'],
             'wa_number' => ['numeric'],
+            'bio' => ['string']
         ]);
 
         if($request->hasFile('avatar')){

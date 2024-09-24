@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function index(User $user){
-        // $stockCount = DB::table('products')->where('user_id', '=', $user->id_user)->count();
         $stockCount = $user->product->count();
         $orderCount = $user->reservation->count();
         $userCount = User::count();

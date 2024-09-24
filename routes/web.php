@@ -3,6 +3,7 @@
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\Seller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminOrSeller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -16,9 +17,9 @@ Route::get('/products/{product:slug}', [ProductController::class, 'show']);
 Route::get('/profil/{user:username}', [ProfileController::class, 'show']);
 Route::get('/documentation', function(){
     return view('documentation', [
-        'title' => 'Documentasi'
+        'title' => 'Laporan'
     ]);
-});
+})->name('documentation');
 
 Route::middleware('auth')->group(function () {
     Route::get('/order-product/{user:username}', [ReservationController::class, 'show']);
@@ -31,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/user-reservation-delete/{id}', [ReservationController::class, 'destroy']);
 });
 
-Route::middleware([Admin::class, Seller::class] )->group(function () {
+Route::middleware(['AdminOrSeller'] )->group(function () {
     Route::get('/reservation/{user:username}', [ReservationController::class, 'index']);
     Route::get('/product/{user:username}', [ProductController::class, 'index'])->name('product');
     Route::get('/edit/{id}', [ProductController::class, 'edit']);

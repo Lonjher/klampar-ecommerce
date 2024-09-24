@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Alamat;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
 
 class RegisteredUserController extends Controller
 {
@@ -29,26 +30,36 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // dd($request->all());
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'username' => ['required', 'string', 'lowercase', 'max:30', 'unique'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
+            'username' => ['required', 'string', 'lowercase', 'max:30'],
             'wa_number' => ['required', 'numeric'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed'],
+            'password_confirmation' => ['required'],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'wa_number' => $request->wa_number,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(route('home', absolute: false));
+        if($request->password === $request->password_confirmation){
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'username' => $request->username,
+                'wa_number' => $request->wa_number,
+                'password' => Hash::make($request->password),
+            ]);
+            $alamat = Alamat::create([
+                'user_id' => $user->id,
+                'dusun' => '-',
+                'desa' => '-',
+                'kecamatan' => '-',
+                'kabupaten' => '-'
+            ]);
+            event(new Registered($user));
+            Auth::login($user);
+            return redirect(route('home', absolute: false))->with('succes', 'Daftar berhasil!');
+        }else{
+            return redirect(route('home', absolute: false))->with('error', 'Daftar gagal, cek kembali data yang anda masukkan!');
+        }
     }
 }

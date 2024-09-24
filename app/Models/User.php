@@ -28,6 +28,7 @@ class User extends Authenticatable
         'wa_number',
         'role_id',
         'password',
+        'bio'
     ];
 
     /**
