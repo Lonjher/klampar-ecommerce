@@ -5,10 +5,11 @@
         <section class="flex w-full pt-12 mx-auto bg-right bg-cover bg-nordic-gray-light md:pt-0 md:items-center"
             style="max-width:1600px; height: 32rem; background-image: url('{{ asset('assets/img/home-banner.jpg') }}');">
 
-            <div class="container mx-auto">
+            <div class="container mx-auto flex justify-center">
 
-                <div class="flex flex-col items-start justify-center w-full px-6 tracking-wide lg:w-1/2">
-                    <span class="rounded-3xl bg-gradient-to-r from-blue-500 pl-3 ">
+                <div
+                    class="flex flex-col justify-center items-center w-full px-6 tracking-wide lg:w-1/2 bg-white_navy bg-opacity-50">
+                    <span class="rounded-3xl pl-3 text-center">
                         <p class="my-4 text-2xl text-black flex flex-col justify-center"><span>Sistem Informasi
                                 Pemasaran</span><span class="my-4 text-2xl text-black"> Batik Tulis Original Klampar Proppo
                                 Pamekasan
@@ -16,9 +17,7 @@
                     </span>
                     <a class="inline-block text-xl leading-relaxed no-underline bg-blue-400 mt-4 hover:bg-blue-500 px-3 rounded-md border-gray-600 hover:text-black hover:border-black"
                         href="#store">products</a>
-
                 </div>
-
             </div>
 
         </section>
